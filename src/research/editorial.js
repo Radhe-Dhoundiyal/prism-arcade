@@ -29,7 +29,7 @@ export const RESEARCH_NARRATIVES = {
   'grid-dominion': { question: 'Can the player to move force equal or unequal final line counts?',
     quantities: 'The score difference is blue edges minus red edges. Either player may use either color.',
     insight: 'Colors are tools, not teams. Player 1 wins when the final difference is nonzero; Player 2 wins when it is zero.',
-    correction: 'The M2A repair corrected cached alpha-beta bounds. Its exact-search engine is unchanged here; larger boards still use a labeled heuristic.',
+    correction: 'An alpha-beta caching defect was corrected by storing only exact search results. Larger boards still use a labeled heuristic.',
     verification: 'The independent oracle agrees on 17,450 board/turn predictions and 32,284 Hard move selections in the tested domain. This is not an exhaustive check of larger boards.' },
   'language-labyrinth': { question: 'How many generated length-10 palindromes contain both a and b?',
     quantities: 'Track final letters, word lengths, and whether a proposed palindrome has a legal derivation.',

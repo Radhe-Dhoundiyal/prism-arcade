@@ -1,4 +1,4 @@
-/* M3: scientific arcade identity and a quiet source-reading surface. */
+/* Arcade presentation and research reading layouts. */
 .lobby-page .lobby-hero { min-height: 100px; }
 .lobby-page .brand-mark { width: 64px; height: 64px; flex-shrink: 0; }
 .lobby-page .portal-card { --portal-accent: #59dfcf; gap: 10px; padding: 18px; border-top: 3px solid var(--portal-accent); }

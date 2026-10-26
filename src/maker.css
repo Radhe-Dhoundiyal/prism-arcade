@@ -1,4 +1,4 @@
-/* Maker-level adjustments are isolated from the historical shared stylesheet. */
+/* Layout and accessibility adjustments isolated from the shared stylesheet. */
 body { letter-spacing: 0; }
 .arcade-shell { max-width: 1480px; }
 .arcade-shell h1 { font-size: 2.25rem; line-height: 1.15; letter-spacing: 0; }

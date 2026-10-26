@@ -1,7 +1,5 @@
 export const MIXED_PALINDROMES = ['bacaaaacab', 'bacabbacab', 'bacaccacab', 'baccaaccab', 'baccccccab', 'bbacaacabb', 'bbaccccabb', 'bbbaccabbb'];
 
-const attribution = 'These mathematical corrections and software audits were AI-assisted. The supplied scans and TeX are unchanged. Authorship is creator-supplied; attribution and publication permissions still need owner confirmation. This account adds no personal recollections or historical discovery dates.';
-
 export const DOSSIERS = [
   {
     id: 'language-correction', portalId: 'language-labyrinth', title: 'A counterexample changes the answer',
@@ -37,7 +35,7 @@ export const DOSSIERS = [
       ], list: MIXED_PALINDROMES },
       { title: '8. Consequence for the answer', paragraphs: ['Under the official rules as supplied, exactly 8 length-10 mixed palindromes exist. The counterexamples refute the historical zero answer without changing any rule. They do not refute the no-final-c invariant.'] },
       { title: '9. Reasoning lesson', paragraphs: ['The final-letter invariant is true, but it does not rule out a palindrome starting and ending in b. One construction refutes the original claim. Exhaustive enumeration answers the separate length-10 counting question.'] },
-      { title: '10. Attribution and correction history', paragraphs: [attribution, 'Maker RC1 already corrected the language engine/challenges and independently checked the eight-word result. M3 adds this supplementary reviewable dossier and source-linked presentation; it does not claim a new historical discovery.'] },
+      { title: '10. Correction history', paragraphs: ['The language engine and challenges were corrected after mixed-palindrome witnesses disproved the original zero claim. Independent forward generation and inverse-rule membership checks agreed on the eight length-10 mixed palindromes. The historical claim remains in the original work.'] },
     ],
   },
   {
@@ -73,7 +71,7 @@ export const DOSSIERS = [
       ] },
       { title: '8. Consequence for the answer', paragraphs: ['For simultaneous first-time wins, the answer is 1 in both versions. For all owners who have won by a given date, no fixed bound exists. The manuscript establishes final-day connectivity for many owners, which addresses the latter cumulative count, not its claimed simultaneous first-time event.'] },
       { title: '9. Reasoning lesson', paragraphs: ['Finding a path on the last day does not show that it first became valid then. Checking earlier prefixes separates new winners from owners who had already won. The forest identity bounds how many new winners one edge can create.'] },
-      { title: '10. Attribution and correction history', paragraphs: [attribution, 'Maker RC1 documented this contradiction, corrected fixtures/targets to 1 and checked 2,709 graph prefixes independently. M3 supplies the full source-linked explanation. Historical legacy activity remains labeled, not erased.'] },
+      { title: '10. Correction history', paragraphs: ['The correction distinguishes newly winning owners from cumulative winners. Software targets were corrected to 1 and checked against 2,709 independent graph-prefix cases. The failed construction remains documented in the historical work.'] },
     ],
   },
   {
@@ -86,15 +84,15 @@ export const DOSSIERS = [
     ],
     sections: [
       { title: '1. Question and context', paragraphs: ['The software explores nonnegative combinations of integer generators and tries to reduce a family {ma,mb,c}, with c congruent to 1 modulo m, to a smaller two-generator problem. Global reachability claims require more than a residue calculation.'] },
-      { title: '2. Original software claim', paragraphs: ['The pre-Maker generalized reduction incorrectly treated the minimal controller count for each residue as sufficient, even when further groups of m controllers create new reduced values. Source: the preserved pre-Maker Number Forge logic.js detectReduction implementation and Maker RC1 verification report. This is a software claim; it is not evidence of a historical student conjecture.'] },
-      { title: '3. Evidence-supported development', paragraphs: ['Maker RC1 records the [6,7,10] regression and restricts the generalization to a proven sufficient condition. The supplied Problem 3 notebook concerns named PRISM examples; no undocumented history of the generalized software algorithm is inferred from it.'] },
+      { title: '2. Original software claim', paragraphs: ['An earlier software generalization treated the minimal controller count for each residue as sufficient, even when further groups of m controllers create new reduced values. The error was in the Number Forge detectReduction implementation, not a claim established by the original notebook.'] },
+      { title: '3. Evidence-supported development', paragraphs: ['Regression checks using [6,7,10] exposed the missing closure condition. The software now certifies the reduction only under a proven sufficient condition. The original Problem 3 notebook concerns the named PRISM examples, not this later software generalization.'] },
       { title: '4. Incorrect assumption', paragraphs: ['In residue r, the number of controllers can be r+mt, not only r. For n=ma*x+mb*y+c*(r+mt), division gives (n-r*c)/m=a*x+b*y+c*t. Ignoring t is sound only if additional c terms introduce no new reduced values. The old residue-only argument did not establish that closure.'] },
       { title: '5. Explicit counterexamples', paragraphs: ['For generators [6,7,10], take m=2, a=3, b=5, controller c=7. Both 14=7+7 and 21=7+7+7 are reachable. Minimal-controller reduction in residue 0 for 14 or residue 1 for 21 leaves quotient 7, which is not in the semigroup generated by 3 and 5. Thus the unqualified reduction falsely rejects both targets.'] },
       { title: '6. Correct sufficient condition', paragraphs: ['The minimal-controller reduction is certified here only when c is already a nonnegative combination of a and b. This condition is sufficient; a different reduction might work when it fails. Without a certificate, the app reports bounded reachability rather than a global impossibility result.'] },
       { title: '7. Complete conditional proof', equation: 'semigroup', paragraphs: ['Let 0<=r<m and n have residue r modulo m. Because ma,mb vanish modulo m and c is 1 modulo m, every representation uses r+mt controllers for some t>=0. Therefore n is representable if and only if (n-r*c)/m belongs to S+<c>. If c belongs to S, closure gives S+<c>=S. Conversely, any quotient in S gives a representation using exactly r controllers. Negative quotients cannot represent nonnegative combinations. This proves the reduction precisely under the stated sufficient condition.', 'For [6,7,10], 7 is not in <3,5>, so this certificate is refused. For the named PRISM cases [9,15,25] and [9,21,49], m=3 gives reduced semigroups <3,5> and <3,7>; controllers 25 and 49 belong to them. Their certified reductions are preserved. Bounded tests separately compare 60 triples x301 targets with independent coefficient enumeration.'] },
       { title: '8. Consequence for software answers', paragraphs: ['14 and 21 must be reachable for [6,7,10]. Lack of this particular certificate is not evidence that a target is unreachable. No conclusion about an error in the original Problem 3 notebook follows from a defect in a later software generalization.'] },
       { title: '9. Reasoning lesson', paragraphs: ['A congruence class controls a count modulo m, not its full value. State a theorem with its closure assumptions and keep exact bounded calculations distinct from global certificates.'] },
-      { title: '10. Attribution and correction history', paragraphs: [attribution, 'This engineering defect was repaired in Maker RC1. M3 adds an explanatory note only; the verified numerical engine is unchanged. The baseline recovery manifest and prior verification report preserve the software correction history.'] },
+      { title: '10. Correction history', paragraphs: ['The generalized reduction was repaired and checked against independent coefficient enumeration. This correction concerns the software; the original notebook and historical solution remain unchanged.'] },
     ],
   },
 ];

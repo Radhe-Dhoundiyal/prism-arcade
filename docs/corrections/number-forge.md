@@ -2,7 +2,7 @@
 
 Number Forge / Software correction
 
-Full later correction dossier. Original sources remain authenticated privately; public redistribution is pending.
+Mathematical correction dossier. Historical originals remain private; this document presents the later correction, not an edited historical manuscript.
 
 ## Source References
 
@@ -18,14 +18,14 @@ The software explores nonnegative combinations of integer generators and tries t
 
 ## 2. Original software claim
 
-The pre-Maker generalized reduction incorrectly treated the minimal controller count for each residue as sufficient, even when further groups of m controllers create new reduced values. Source: the preserved pre-Maker Number Forge logic.js detectReduction implementation and Maker RC1 verification report. This is a software claim; it is not evidence of a historical student conjecture.
+An earlier software generalization treated the minimal controller count for each residue as sufficient, even when further groups of m controllers create new reduced values. The error was in the Number Forge detectReduction implementation, not a claim established by the original notebook.
 
 
 
 
 ## 3. Evidence-supported development
 
-Maker RC1 records the [6,7,10] regression and restricts the generalization to a proven sufficient condition. The supplied Problem 3 notebook concerns named PRISM examples; no undocumented history of the generalized software algorithm is inferred from it.
+Regression checks using [6,7,10] exposed the missing closure condition. The software now certifies the reduction only under a proven sufficient condition. The original Problem 3 notebook concerns the named PRISM examples, not this later software generalization.
 
 
 
@@ -80,11 +80,9 @@ A congruence class controls a count modulo m, not its full value. State a theore
 
 
 
-## 10. Attribution and correction history
+## 10. Correction history
 
-These mathematical corrections and software audits were AI-assisted. The supplied scans and TeX are unchanged. Authorship is creator-supplied; attribution and publication permissions still need owner confirmation. This account adds no personal recollections or historical discovery dates.
-
-This engineering defect was repaired in Maker RC1. M3 adds an explanatory note only; the verified numerical engine is unchanged. The baseline recovery manifest and prior verification report preserve the software correction history.
+The generalized reduction was repaired and checked against independent coefficient enumeration. This correction concerns the software; the original notebook and historical solution remain unchanged.
 
 
 
