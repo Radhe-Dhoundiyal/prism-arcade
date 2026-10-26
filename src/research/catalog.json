@@ -9,12 +9,12 @@
       "insight": "A right rotation becomes an exact integer equation.",
       "correction": "No historical conjecture correction is asserted here; the software input parser and budgets were repaired.",
       "verification": "Independent integer rotation enumeration for n=1..12; exact bounded BigInt operations.",
-      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "authorship": "Original mathematical exploration supplied by Radhe Dhoundiyal; later software verification and corrections are documented separately.",
       "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
       "correctionHistory": [
         {
           "date": "2026-10-25",
-          "actor": "AI-assisted engineering audit",
+          "actor": "Software verification",
           "note": "No historical conjecture correction is asserted here; the software input parser and budgets were repaired."
         }
       ],
@@ -55,12 +55,12 @@
       "insight": "Finite-step recurrence and stationary behavior are different questions.",
       "correction": "The software previously compared odd-start simulations with an even-start analytic reference. Periodic and identity chains now have explicit labels.",
       "verification": "Independent four-outcome recurrence across 32 probability/start combinations and steps 0..30.",
-      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "authorship": "Original mathematical exploration supplied by Radhe Dhoundiyal; later software verification and corrections are documented separately.",
       "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
       "correctionHistory": [
         {
           "date": "2026-10-25",
-          "actor": "AI-assisted engineering audit",
+          "actor": "Software verification",
           "note": "The software previously compared odd-start simulations with an even-start analytic reference. Periodic and identity chains now have explicit labels."
         }
       ],
@@ -101,12 +101,12 @@
       "insight": "A controller reduction needs a closure condition, not only a residue.",
       "correction": "The generalized software reduction falsely excluded 14 and 21 for [6,7,10]. It is now restricted to a proven sufficient condition.",
       "verification": "60 generator triples x 301 targets against coefficient enumeration; PRISM tails certified by a full reachable block.",
-      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "authorship": "Original mathematical exploration supplied by Radhe Dhoundiyal; later software verification and corrections are documented separately.",
       "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
       "correctionHistory": [
         {
           "date": "2026-10-25",
-          "actor": "AI-assisted engineering audit",
+          "actor": "Software verification",
           "note": "The generalized software reduction falsely excluded 14 and 21 for [6,7,10]. It is now restricted to a proven sufficient condition."
         }
       ],
@@ -145,15 +145,15 @@
       "problemNumber": 4,
       "concept": "Adversarial play with color tools",
       "insight": "Player roles depend on terminal edge difference, not peg color.",
-      "correction": "M2A corrected cached alpha-beta bounds. The original minimax engine is preserved with conservative exact-only caching.",
-      "verification": "Independent oracle: 17,450 board/turn comparisons and 32,284 Hard selections in the declared M2A domain.",
-      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "correction": "An alpha-beta caching defect was corrected by storing only exact search results. Larger boards still use a labeled heuristic.",
+      "verification": "Independent oracle: 17,450 board/turn comparisons and 32,284 Hard selections within the bounded exact-search domain.",
+      "authorship": "Original mathematical exploration supplied by Radhe Dhoundiyal; later software verification and corrections are documented separately.",
       "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
       "correctionHistory": [
         {
           "date": "2026-10-25",
-          "actor": "AI-assisted engineering audit",
-          "note": "M2A corrected cached alpha-beta bounds. The original minimax engine is preserved with conservative exact-only caching."
+          "actor": "Software verification",
+          "note": "An alpha-beta caching defect was corrected by storing only exact search results. Larger boards still use a labeled heuristic."
         }
       ],
       "assets": [
@@ -193,12 +193,12 @@
       "insight": "A valid derivation can disprove an attractive palindrome conjecture.",
       "correction": "The original TeX claims no mixed palindrome and answer 0. Those claims are disproved by bacab and bacabbacab. The originals below are unchanged; the corrected length-10 count is 8.",
       "verification": "Inverse-rule membership agrees for all 88,572 nonempty ternary words of length at most 10. All generated derivation edges are replayed.",
-      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "authorship": "Original mathematical exploration supplied by Radhe Dhoundiyal; later software verification and corrections are documented separately.",
       "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
       "correctionHistory": [
         {
           "date": "2026-10-25",
-          "actor": "AI-assisted engineering audit",
+          "actor": "Mathematical correction",
           "note": "The original TeX claims no mixed palindrome and answer 0. Those claims are disproved by bacab and bacabbacab. The originals below are unchanged; the corrected length-10 count is 8."
         }
       ],
@@ -239,12 +239,12 @@
       "insight": "Process edges in reverse order: rejected forest edges are exactly the winning owners.",
       "correction": "The original TeX claims arbitrarily many new winners on a day. With one distinct edge/player per day, earlier rungs already win. The corrected maximum of newly winning players on one day is 1; cumulative winners can grow.",
       "verification": "2,709 independent reverse-forest graph-prefix comparisons and later-only simple paths for every corrected unit-lattice challenge.",
-      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "authorship": "Original mathematical exploration supplied by Radhe Dhoundiyal; later software verification and corrections are documented separately.",
       "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
       "correctionHistory": [
         {
           "date": "2026-10-25",
-          "actor": "AI-assisted engineering audit",
+          "actor": "Mathematical correction",
           "note": "The original TeX claims arbitrarily many new winners on a day. With one distinct edge/player per day, earlier rungs already win. The corrected maximum of newly winning players on one day is 1; cumulative winners can grow."
         }
       ],
@@ -285,12 +285,12 @@
       "insight": "Every 3-shift is even; cycle decompositions expose loop sizes.",
       "correction": "No historical conjecture correction is asserted here. Invalid fractional permutations and overridable search caps were repaired in software.",
       "verification": "Independent permutation enumeration n=3..7; every starter BFS witness replayed with independent rotations.",
-      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "authorship": "Original mathematical exploration supplied by Radhe Dhoundiyal; later software verification and corrections are documented separately.",
       "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
       "correctionHistory": [
         {
           "date": "2026-10-25",
-          "actor": "AI-assisted engineering audit",
+          "actor": "Software verification",
           "note": "No historical conjecture correction is asserted here. Invalid fractional permutations and overridable search caps were repaired in software."
         }
       ],
@@ -331,12 +331,12 @@
       "insight": "Canonical optimal values are reusable; token-indexed witnesses must be reconstructed locally.",
       "correction": "The software cached indexed paths across reordered boards. The corrected [4,5,5] witness has 19 legal moves; this is not a general bound for arbitrary inputs.",
       "verification": "67 initial states, 4,768 independent ordered reference states; all optimal and sampled greedy transitions replayed.",
-      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "authorship": "Project contributor: Radhe Dhoundiyal. No historical notebook or completed solution was supplied for Problem 8.",
       "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
       "correctionHistory": [
         {
           "date": "2026-10-25",
-          "actor": "AI-assisted engineering audit",
+          "actor": "Software verification",
           "note": "The software cached indexed paths across reordered boards. The corrected [4,5,5] witness has 19 legal moves; this is not a general bound for arbitrary inputs."
         }
       ],

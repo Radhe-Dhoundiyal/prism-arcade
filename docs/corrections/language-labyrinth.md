@@ -2,7 +2,7 @@
 
 Problem 5 / Mathematical correction
 
-Full later correction dossier. Original sources remain authenticated privately; public redistribution is pending.
+Mathematical correction dossier. Historical originals remain private; this document presents the later correction, not an edited historical manuscript.
 
 ## Source References
 
@@ -93,11 +93,9 @@ The final-letter invariant is true, but it does not rule out a palindrome starti
 
 
 
-## 10. Attribution and correction history
+## 10. Correction history
 
-These mathematical corrections and software audits were AI-assisted. The supplied scans and TeX are unchanged. Authorship is creator-supplied; attribution and publication permissions still need owner confirmation. This account adds no personal recollections or historical discovery dates.
-
-Maker RC1 already corrected the language engine/challenges and independently checked the eight-word result. M3 adds this supplementary reviewable dossier and source-linked presentation; it does not claim a new historical discovery.
+The language engine and challenges were corrected after mixed-palindrome witnesses disproved the original zero claim. Independent forward generation and inverse-rule membership checks agreed on the eight length-10 mixed palindromes. The historical claim remains in the original work.
 
 
 

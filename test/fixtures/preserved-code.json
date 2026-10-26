@@ -1,5 +1,6 @@
 {
   "predecessor": "0.3.0-rc.3",
+  "presentationRevision": "0.3.1",
   "files": [
     {
       "path": "src/App.jsx",
@@ -63,7 +64,7 @@
     },
     {
       "path": "src/experience.css",
-      "sha256": "4731486dc2a9e3d5ef4eb42586864fa6933913bb42ff5648c81171cb11ddcf5d"
+      "sha256": "f1fda4ac0f722eda188d707fba961fd3272fcf847f6d90399b7c87cb69b10fa7"
     },
     {
       "path": "src/games/binaryShift/BinaryShift.jsx",
@@ -223,7 +224,7 @@
     },
     {
       "path": "src/maker.css",
-      "sha256": "e181ae9fdda1e929af9a4a212b944fb1980b0342b9953d073eb6b5c45bc3665a"
+      "sha256": "b6a0e3005089ec9d528126267b3bbb41c4dcbd36bab021bf5b6544e94fe67386"
     },
     {
       "path": "src/pages/Lobby.jsx",
@@ -235,7 +236,7 @@
     },
     {
       "path": "src/polish.css",
-      "sha256": "b6bab0099eef8dc430d870aa433975df94715474dadbf827c8c725624836346d"
+      "sha256": "ab43cd02719c86b88b5de74f91e008b2adb0b3aaaddccef39bf57f1ef201d37d"
     },
     {
       "path": "src/profile/profile.js",
@@ -243,7 +244,7 @@
     },
     {
       "path": "src/research/editorial.js",
-      "sha256": "d4a9b97dc26ff8b1c213dd63b5dbf46bc45f317b25b7411749033f71e65e3677"
+      "sha256": "bf4022bbd23c87c0c5e35be31fa4ac049eaf9969c1c0c553091ec2e7005e2ca9"
     },
     {
       "path": "src/research/mathNotation.js",
@@ -327,7 +328,7 @@
     },
     {
       "path": "src/research/catalog.json",
-      "sha256": "6cd1a704a8f9f22592c76bc78890ee415ab581354849825eba96fd78c1207d47"
+      "sha256": "f3ae6e0463d5bfa84fbbca5155041ad119e3d795fb76d0e618274b90c991ccb0"
     },
     {
       "path": "src/research/notebook-pages.json",
@@ -335,7 +336,7 @@
     },
     {
       "path": "src/research/dossiers.js",
-      "sha256": "6f651f9e625f89cc4fa5f06050ac1264111b269ee1a5014bf95cf555c5a102db"
+      "sha256": "da0aee64dd67e38c3d7ffcfd3bbee736573d6a5efafa466bb8e843a4c3e3dd79"
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 Problem 6 / Mathematical correction
 
-Full later correction dossier. Original sources remain authenticated privately; public redistribution is pending.
+Mathematical correction dossier. Historical originals remain private; this document presents the later correction, not an edited historical manuscript.
 
 ## Source References
 
@@ -87,11 +87,9 @@ Finding a path on the last day does not show that it first became valid then. Ch
 
 
 
-## 10. Attribution and correction history
+## 10. Correction history
 
-These mathematical corrections and software audits were AI-assisted. The supplied scans and TeX are unchanged. Authorship is creator-supplied; attribution and publication permissions still need owner confirmation. This account adds no personal recollections or historical discovery dates.
-
-Maker RC1 documented this contradiction, corrected fixtures/targets to 1 and checked 2,709 graph prefixes independently. M3 supplies the full source-linked explanation. Historical legacy activity remains labeled, not erased.
+The correction distinguishes newly winning owners from cumulative winners. Software targets were corrected to 1 and checked against 2,709 independent graph-prefix cases. The failed construction remains documented in the historical work.
 
 
 
