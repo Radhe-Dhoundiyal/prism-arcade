@@ -30,11 +30,17 @@ jobs:
           done
           npm run smoke
           PRISM_BASE_URL=http://127.0.0.1:4175 npm run smoke:research
-      - uses: actions/upload-artifact@v4
+      - name: Validate verification reports
+        id: qa-reports
         if: always()
+        run: node scripts/verify-qa-reports.mjs
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() && steps.qa-reports.outcome == 'success' }}
         with:
           name: verification-results
           path: |
             .qa/qa-*.json
             .qa/research/research-*.json
           retention-days: 7
+          include-hidden-files: true
+          if-no-files-found: error

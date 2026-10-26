@@ -154,7 +154,7 @@ export default function ResearchPanel({ portalId }) {
           </section>{showDossier && dossier && <Dossier dossier={dossier} />}
         </>}
       </div>
-      <footer className="research-provenance"><h3>Provenance</h3><p>The original mathematical investigations are credited to Radhe Dhoundiyal. Software implementation and later mathematical verification involved AI assistance. Historical conclusions and subsequent corrections are documented separately.</p>
+      <footer className="research-provenance"><h3>Provenance</h3><p>Historical investigations and later mathematical corrections are documented separately. Source Details records the original references, public editions and verification history. See <a href="https://github.com/Radhe-Dhoundiyal/prism-arcade/blob/main/docs/provenance.md" target="_blank" rel="noreferrer">provenance and attribution</a>.</p>
         <p>Research links open labeled public editions where included. Unmodified historical originals and the official problem-set PDF are not distributed. Source Details distinguishes original and derivative hashes.</p>
         <p><a href="https://www.prism-india.org/" target="_blank" rel="noreferrer">PRISM India official website</a></p>
         <p>Research editions and media have separate rights. Third-party material and future asset hosting require separate permission; see the <a href="/research-rights.txt" target="_blank" rel="noreferrer">research-rights notice</a>.</p>

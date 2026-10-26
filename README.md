@@ -1,6 +1,6 @@
 # PRISM Arcade
 
-Eight mathematical environments for exploring a state, testing a conjecture and following the evidence to a proof or counterexample. The research journey connects the software to handwritten investigations, historical solutions and separately documented corrections.
+PRISM Arcade turns eight PRISM India problems into interactive mathematical experiments. Explore binary rotations, probability, graph games and formal languages; test conjectures, inspect counterexamples and follow the reasoning behind the results.
 
 ## Preview
 
@@ -68,7 +68,5 @@ See [architecture](docs/architecture.md), [mathematical scope](docs/mathematics.
 ## Credits and Rights
 
 The source problems are from [PRISM India](https://www.prism-india.org/). This is an independent project, without organizer endorsement. The complete official problem-set PDF and excluded statement material are not distributed.
-
-Radhe Dhoundiyal is the sole human contributor. Software development, debugging, later mathematical verification and editorial preparation were AI-assisted; later corrections are not attributed to the historical notebooks.
 
 Software rights held by Radhe Dhoundiyal are released under the [MIT License](LICENSE), subject to the [license scope](docs/licensing.md). Research documents and preview media have separately reserved rights, not a blanket MIT grant. See [research rights](RESEARCH_NOTICE.md) and [third-party notices](THIRD_PARTY_NOTICES.md). PRISM India's statements and organizer diagrams are not licensed through this project.

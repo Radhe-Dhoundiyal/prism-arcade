@@ -23,12 +23,19 @@ it('complete mathematical arguments and witnesses retain their v0.3.0 identities
   for(const dossier of DOSSIERS)assert.equal(dossier.sections.length,10);
 });
 
-it('research copy uses confirmed attribution without repeating the full acknowledgment in dossiers',()=>{
+it('research copy keeps source authorship and links to the centralized acknowledgment',()=>{
   const panel=fs.readFileSync('src/research/ResearchPanel.jsx','utf8');
-  assert.match(panel,/investigations are credited to Radhe Dhoundiyal/);
-  assert.equal((panel.match(/AI assistance/g)??[]).length,1);
+  assert.match(panel,/Historical investigations and later mathematical corrections are documented separately/);
+  assert.match(panel,/Source Details records the original references, public editions and verification history/);
+  assert.match(panel,/blob\/main\/docs\/provenance\.md/);
+  assert.match(panel,/record\.authorship/);
   assert.match(panel,/research-rights\.txt/);
-  assert.match(fs.readFileSync('README.md','utf8'),/Software development, debugging, later mathematical verification and editorial preparation were AI-assisted/);
+  const readme=fs.readFileSync('README.md','utf8'),provenance=fs.readFileSync('docs/provenance.md','utf8');
+  assert.match(readme,/\[provenance\]\(docs\/provenance\.md\)/);
+  assert.doesNotMatch(readme+panel,/sole human contributor|AI-assisted|AI assistance/);
+  assert.match(provenance,/AI tools assisted with software implementation, debugging, later mathematical verification and editorial preparation/);
+  assert.match(provenance,/supplied by Radhe Dhoundiyal/);
+  assert.match(provenance,/Historical notebooks and subsequent corrections are distinguished/);
   for(const file of ['src/research/ResearchPanel.jsx','src/research/catalog.json','src/research/dossiers.js','src/research/editorial.js',...DOSSIERS.flatMap(d=>['public'+d.document,'docs/corrections/'+d.document.split('/').at(-1)])]){
     assert.doesNotMatch(fs.readFileSync(file,'utf8'),/awaits owner confirmation|still need owner confirmation|Maker RC1|pre-Maker|\bM2A\b|\bM3\b|personal recollections|supplementary reviewable dossier/i,file);
   }
