@@ -1,0 +1,40 @@
+name: Verify PRISM Arcade
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run test:math
+      - run: npm run test:save
+      - run: npm run verify:content
+      - run: npm audit
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Production UI verification
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4175 --strictPort > /tmp/prism-preview.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:4175/ > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run smoke
+          PRISM_BASE_URL=http://127.0.0.1:4175 npm run smoke:research
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-results
+          path: |
+            .qa/qa-*.json
+            .qa/research/research-*.json
+          retention-days: 7

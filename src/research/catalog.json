@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 1,
+  "sourceScope": "Problem-Set and per-problem Solutions only; private Application-Content excluded",
+  "records": [
+    {
+      "portalId": "binary-shift",
+      "problemNumber": 1,
+      "concept": "Binary rotation and divisibility",
+      "insight": "A right rotation becomes an exact integer equation.",
+      "correction": "No historical conjecture correction is asserted here; the software input parser and budgets were repaired.",
+      "verification": "Independent integer rotation enumeration for n=1..12; exact bounded BigInt operations.",
+      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-25",
+          "actor": "AI-assisted engineering audit",
+          "note": "No historical conjecture correction is asserted here; the software input parser and budgets were repaired."
+        }
+      ],
+      "assets": [
+        {
+          "originalFile": "Solutions/Question-1/Question-1.tex",
+          "url": "/research/problem-1-original.tex",
+          "kind": "tex",
+          "sourcePage": null,
+          "sha256": "d3b2072ed41f09b699d2c22b3f57a7ecd5ff54dcebc6dd0ec99bc5447bb2792a",
+          "bytes": 4758,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Solutions/Question-1/Rough-Q1.pdf",
+          "url": "/research/problem-1-rough.pdf",
+          "kind": "rough",
+          "sourcePage": 1,
+          "sha256": "59ddd51dd201b2a5aa03edbe45e70c7d1582e11aff321e53cb823ae37c369962",
+          "bytes": 4065832,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Problem-Set/prism-india-problem-set.pdf",
+          "url": "/research/prism-india-problem-set.pdf",
+          "kind": "official-statement",
+          "sourcePage": 2,
+          "sha256": "a745d862f44901ec1c58d41f4d7e7669398686b478c1fb2b3d4ba388957e7cb8",
+          "bytes": 365740,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        }
+      ]
+    },
+    {
+      "portalId": "parity-engine",
+      "problemNumber": 2,
+      "concept": "Parity as a two-state Markov chain",
+      "insight": "Finite-step recurrence and stationary behavior are different questions.",
+      "correction": "The software previously compared odd-start simulations with an even-start analytic reference. Periodic and identity chains now have explicit labels.",
+      "verification": "Independent four-outcome recurrence across 32 probability/start combinations and steps 0..30.",
+      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-25",
+          "actor": "AI-assisted engineering audit",
+          "note": "The software previously compared odd-start simulations with an even-start analytic reference. Periodic and identity chains now have explicit labels."
+        }
+      ],
+      "assets": [
+        {
+          "originalFile": "Solutions/Question-2/Question-2.tex",
+          "url": "/research/problem-2-original.tex",
+          "kind": "tex",
+          "sourcePage": null,
+          "sha256": "f1e7a1e828fc8970c39e3f8ecad6f8f0f1f19530eee8d291c29317cd549c24c5",
+          "bytes": 6723,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Solutions/Question-2/Rough-Q2.pdf",
+          "url": "/research/problem-2-rough.pdf",
+          "kind": "rough",
+          "sourcePage": 1,
+          "sha256": "11dbb56576ff1c682a09b865c9293e5db84e9f571ede734e7a0649c52f3a7d19",
+          "bytes": 5736191,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Problem-Set/prism-india-problem-set.pdf",
+          "url": "/research/prism-india-problem-set.pdf",
+          "kind": "official-statement",
+          "sourcePage": 2,
+          "sha256": "a745d862f44901ec1c58d41f4d7e7669398686b478c1fb2b3d4ba388957e7cb8",
+          "bytes": 365740,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        }
+      ]
+    },
+    {
+      "portalId": "number-forge",
+      "problemNumber": 3,
+      "concept": "Numerical semigroups and residue reduction",
+      "insight": "A controller reduction needs a closure condition, not only a residue.",
+      "correction": "The generalized software reduction falsely excluded 14 and 21 for [6,7,10]. It is now restricted to a proven sufficient condition.",
+      "verification": "60 generator triples x 301 targets against coefficient enumeration; PRISM tails certified by a full reachable block.",
+      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-25",
+          "actor": "AI-assisted engineering audit",
+          "note": "The generalized software reduction falsely excluded 14 and 21 for [6,7,10]. It is now restricted to a proven sufficient condition."
+        }
+      ],
+      "assets": [
+        {
+          "originalFile": "Solutions/Question-3/Question-3.tex",
+          "url": "/research/problem-3-original.tex",
+          "kind": "tex",
+          "sourcePage": null,
+          "sha256": "8600bddad695fd3bab4c573355f19904bba2cfb3c321f13081050fc94221182b",
+          "bytes": 10013,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Solutions/Question-3/Rough-Q3.pdf",
+          "url": "/research/problem-3-rough.pdf",
+          "kind": "rough",
+          "sourcePage": 1,
+          "sha256": "eeb2b64de1f5e4e77700eff767705accd0230f3811486c9e2e982d929d25c2bf",
+          "bytes": 5873169,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Problem-Set/prism-india-problem-set.pdf",
+          "url": "/research/prism-india-problem-set.pdf",
+          "kind": "official-statement",
+          "sourcePage": 2,
+          "sha256": "a745d862f44901ec1c58d41f4d7e7669398686b478c1fb2b3d4ba388957e7cb8",
+          "bytes": 365740,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        }
+      ]
+    },
+    {
+      "portalId": "grid-dominion",
+      "problemNumber": 4,
+      "concept": "Adversarial play with color tools",
+      "insight": "Player roles depend on terminal edge difference, not peg color.",
+      "correction": "M2A corrected cached alpha-beta bounds. The original minimax engine is preserved with conservative exact-only caching.",
+      "verification": "Independent oracle: 17,450 board/turn comparisons and 32,284 Hard selections in the declared M2A domain.",
+      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-25",
+          "actor": "AI-assisted engineering audit",
+          "note": "M2A corrected cached alpha-beta bounds. The original minimax engine is preserved with conservative exact-only caching."
+        }
+      ],
+      "assets": [
+        {
+          "originalFile": "Solutions/Question-4/Question-4.tex",
+          "url": "/research/problem-4-original.tex",
+          "kind": "tex",
+          "sourcePage": null,
+          "sha256": "69a0b88dc01db690c5c53b942fac2a685e5cbf8b1e4fbc3243d9422be27d084b",
+          "bytes": 14676,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Solutions/Question-4/Rough-Q4.pdf",
+          "url": "/research/problem-4-rough.pdf",
+          "kind": "rough",
+          "sourcePage": 1,
+          "sha256": "697a7a6b1a6b6c025f0675668a6fa9b82e3dac983c0dbae59fd9a33131ef953b",
+          "bytes": 5120031,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Problem-Set/prism-india-problem-set.pdf",
+          "url": "/research/prism-india-problem-set.pdf",
+          "kind": "official-statement",
+          "sourcePage": 2,
+          "sha256": "a745d862f44901ec1c58d41f4d7e7669398686b478c1fb2b3d4ba388957e7cb8",
+          "bytes": 365740,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        }
+      ]
+    },
+    {
+      "portalId": "language-labyrinth",
+      "problemNumber": 5,
+      "concept": "Formal languages, conjectures and counterexamples",
+      "insight": "A valid derivation can disprove an attractive palindrome conjecture.",
+      "correction": "The original TeX claims no mixed palindrome and answer 0. Those claims are disproved by bacab and bacabbacab. The originals below are unchanged; the corrected length-10 count is 8.",
+      "verification": "Inverse-rule membership agrees for all 88,572 nonempty ternary words of length at most 10. All generated derivation edges are replayed.",
+      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-25",
+          "actor": "AI-assisted engineering audit",
+          "note": "The original TeX claims no mixed palindrome and answer 0. Those claims are disproved by bacab and bacabbacab. The originals below are unchanged; the corrected length-10 count is 8."
+        }
+      ],
+      "assets": [
+        {
+          "originalFile": "Solutions/Question-5/Question-5.tex",
+          "url": "/research/problem-5-original.tex",
+          "kind": "tex",
+          "sourcePage": null,
+          "sha256": "5928d8f643b6ed9db44b0f981dbebf19f492d877ef6c13207467903675b8d089",
+          "bytes": 4238,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Solutions/Question-5/Q5-Rough.pdf",
+          "url": "/research/problem-5-rough.pdf",
+          "kind": "rough",
+          "sourcePage": 1,
+          "sha256": "7cc343f0a9e676e2b601626bdc1bb84997a58a1fefc35379b24ddaf25228e5f9",
+          "bytes": 10220923,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Problem-Set/prism-india-problem-set.pdf",
+          "url": "/research/prism-india-problem-set.pdf",
+          "kind": "official-statement",
+          "sourcePage": 3,
+          "sha256": "a745d862f44901ec1c58d41f4d7e7669398686b478c1fb2b3d4ba388957e7cb8",
+          "bytes": 365740,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        }
+      ]
+    },
+    {
+      "portalId": "temporal-graphs",
+      "problemNumber": 6,
+      "concept": "Ordered graphs and new versus cumulative winners",
+      "insight": "Process edges in reverse order: rejected forest edges are exactly the winning owners.",
+      "correction": "The original TeX claims arbitrarily many new winners on a day. With one distinct edge/player per day, earlier rungs already win. The corrected maximum of newly winning players on one day is 1; cumulative winners can grow.",
+      "verification": "2,709 independent reverse-forest graph-prefix comparisons and later-only simple paths for every corrected unit-lattice challenge.",
+      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-25",
+          "actor": "AI-assisted engineering audit",
+          "note": "The original TeX claims arbitrarily many new winners on a day. With one distinct edge/player per day, earlier rungs already win. The corrected maximum of newly winning players on one day is 1; cumulative winners can grow."
+        }
+      ],
+      "assets": [
+        {
+          "originalFile": "Solutions/Question-6/Question-6.tex",
+          "url": "/research/problem-6-original.tex",
+          "kind": "tex",
+          "sourcePage": null,
+          "sha256": "b6b5007a67c3cc3c40e0a03993d4f692cbc4e094b94fee460cced1d292acd2f1",
+          "bytes": 7406,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Solutions/Question-6/Q6_Rough.pdf",
+          "url": "/research/problem-6-rough.pdf",
+          "kind": "rough",
+          "sourcePage": 1,
+          "sha256": "d8d45c65dfac66f69a6ee33724ffa7363406a4f777ab0c3d1ca181ee1f894c5f",
+          "bytes": 4503255,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Problem-Set/prism-india-problem-set.pdf",
+          "url": "/research/prism-india-problem-set.pdf",
+          "kind": "official-statement",
+          "sourcePage": 3,
+          "sha256": "a745d862f44901ec1c58d41f4d7e7669398686b478c1fb2b3d4ba388957e7cb8",
+          "bytes": 365740,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        }
+      ]
+    },
+    {
+      "portalId": "loop-strings",
+      "problemNumber": 7,
+      "concept": "Permutation parity, cycles and loop groupings",
+      "insight": "Every 3-shift is even; cycle decompositions expose loop sizes.",
+      "correction": "No historical conjecture correction is asserted here. Invalid fractional permutations and overridable search caps were repaired in software.",
+      "verification": "Independent permutation enumeration n=3..7; every starter BFS witness replayed with independent rotations.",
+      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-25",
+          "actor": "AI-assisted engineering audit",
+          "note": "No historical conjecture correction is asserted here. Invalid fractional permutations and overridable search caps were repaired in software."
+        }
+      ],
+      "assets": [
+        {
+          "originalFile": "Solutions/Question-7/Question-7.tex",
+          "url": "/research/problem-7-original.tex",
+          "kind": "tex",
+          "sourcePage": null,
+          "sha256": "7086e450ed702d71a6a7f8b7a5a1160cebb5921754618207a26f5fce7fa77d3b",
+          "bytes": 10937,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Solutions/Question-7/Rough-Q7.pdf",
+          "url": "/research/problem-7-rough.pdf",
+          "kind": "rough",
+          "sourcePage": 1,
+          "sha256": "76abcf7417f4a422fd2d1f43b17253abdf563a3f2bb95eaac72439cf5fd387de",
+          "bytes": 2592549,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Problem-Set/prism-india-problem-set.pdf",
+          "url": "/research/prism-india-problem-set.pdf",
+          "kind": "official-statement",
+          "sourcePage": 4,
+          "sha256": "a745d862f44901ec1c58d41f4d7e7669398686b478c1fb2b3d4ba388957e7cb8",
+          "bytes": 365740,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        }
+      ]
+    },
+    {
+      "portalId": "blackboard-moves",
+      "problemNumber": 8,
+      "concept": "Greedy strategies versus exact finite search",
+      "insight": "Canonical optimal values are reusable; token-indexed witnesses must be reconstructed locally.",
+      "correction": "The software cached indexed paths across reordered boards. The corrected [4,5,5] witness has 19 legal moves; this is not a general bound for arbitrary inputs.",
+      "verification": "67 initial states, 4,768 independent ordered reference states; all optimal and sampled greedy transitions replayed.",
+      "authorship": "Creator-supplied local records; attribution awaits owner confirmation. Software explanations and computational corrections are AI-assisted, not claimed as independent PRISM submission work.",
+      "claimStatus": "Historical source retained, not certified proof. Official rules are controlling; display coordinates are not source geometry.",
+      "correctionHistory": [
+        {
+          "date": "2026-10-25",
+          "actor": "AI-assisted engineering audit",
+          "note": "The software cached indexed paths across reordered boards. The corrected [4,5,5] witness has 19 legal moves; this is not a general bound for arbitrary inputs."
+        }
+      ],
+      "assets": [
+        {
+          "originalFile": "Solutions/Question-8/Question-8.tex",
+          "url": "/research/problem-8-original.tex",
+          "kind": "problem-extract",
+          "sourcePage": null,
+          "sha256": "782e84b4575a43981d604ce2bf019ae37315c936590fc0b1d0b965ca07f5cb13",
+          "bytes": 698,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        },
+        {
+          "originalFile": "Problem-Set/prism-india-problem-set.pdf",
+          "url": "/research/prism-india-problem-set.pdf",
+          "kind": "official-statement",
+          "sourcePage": 4,
+          "sha256": "a745d862f44901ec1c58d41f4d7e7669398686b478c1fb2b3d4ba388957e7cb8",
+          "bytes": 365740,
+          "verificationStatus": "byte-identical local copy; mathematical content not thereby certified"
+        }
+      ]
+    }
+  ],
+  "missingAssets": [
+    {
+      "portalId": "blackboard-moves",
+      "kind": "rough",
+      "status": "awaiting-source",
+      "reason": "No problem-specific handwritten notebook found in the inspected Solutions directory."
+    }
+  ]
+}

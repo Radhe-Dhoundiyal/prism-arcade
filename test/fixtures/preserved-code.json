@@ -1,0 +1,341 @@
+{
+  "predecessor": "0.3.0-rc.3",
+  "files": [
+    {
+      "path": "src/App.jsx",
+      "sha256": "3744c7a8cdb3d059a91a4d4be7af2b777669dadcb489a6d98c7cd3ba1fde7bb0"
+    },
+    {
+      "path": "src/achievements/achievements.js",
+      "sha256": "7c49c32c28c3cc7d2d385e1e3ae87a9047ba6ce2d53b99f8f289d3b9efc96328"
+    },
+    {
+      "path": "src/components/ErrorBoundary.jsx",
+      "sha256": "26abed8ee19a5743f1fd5befaf8c27516914fc3165f24b1fab6da79716fdca03"
+    },
+    {
+      "path": "src/components/MathEquation.jsx",
+      "sha256": "7f914ee94ec175c399d7fb71b7e1510c68bb8391dc7eb87de0e0ceb71801773d"
+    },
+    {
+      "path": "src/components/PathReplay.jsx",
+      "sha256": "11db1acbe2b2ca5f7aaa83e7481a51c9fa612854ab3872f83c37df9f7d8673d4"
+    },
+    {
+      "path": "src/components/PortalPreview.jsx",
+      "sha256": "1bd82fde362ebca59883279a3db7180a0995e14fa616c918ecf943e052310906"
+    },
+    {
+      "path": "src/components/StorageNotice.jsx",
+      "sha256": "0b81989bfad6eeb9c4093bd79da260c89eb6d57b12b3cc73e9e58625d48776a5"
+    },
+    {
+      "path": "src/core/math.worker.js",
+      "sha256": "afc75d5f9ce7c716c52c5a498ea100807cb38d90aaf838f573a25c8f10a2493f"
+    },
+    {
+      "path": "src/core/mathTasks.js",
+      "sha256": "cd6b188946d8ee8d5e047904198c6bfd78712f3fca85eb40da67814462a1a7a1"
+    },
+    {
+      "path": "src/core/progress.js",
+      "sha256": "60308120511f55816db180d74d2525fce233ac89fbf686f9a87f03175261a031"
+    },
+    {
+      "path": "src/core/runMathTask.js",
+      "sha256": "3294dbdb81d31c359f8d84ed1e1388a29a69583573ac3a90ceba8f64f1f6a7b0"
+    },
+    {
+      "path": "src/core/saveManager.js",
+      "sha256": "ac882ce9c2cca73d40c17f04103acbc007203664e1829208137e8c6457ab2b71"
+    },
+    {
+      "path": "src/core/saveSchema.js",
+      "sha256": "62cccfbc83f7d526faee8f412bc35533854ef77e2839ae4ac3c82a7f725179fe"
+    },
+    {
+      "path": "src/core/storage.js",
+      "sha256": "caec92451aaa6dc2ef85ff9056d3af7e5e86681f0cfe17aea87a91870936dd41"
+    },
+    {
+      "path": "src/core/useMathJob.js",
+      "sha256": "6f3872d9a4be8f04e7bc01d805e5a85459ba9a694e6b47454c4bffb6e360c5f1"
+    },
+    {
+      "path": "src/experience.css",
+      "sha256": "4731486dc2a9e3d5ef4eb42586864fa6933913bb42ff5648c81171cb11ddcf5d"
+    },
+    {
+      "path": "src/games/binaryShift/BinaryShift.jsx",
+      "sha256": "ea732f8a43c58b9569d11a5bc0fe67889d62722ae3130d7695a44d8d269883fc"
+    },
+    {
+      "path": "src/games/binaryShift/challenges.js",
+      "sha256": "4bb4c87476d9deae76ceb2316db880213c085d2f8bf01c945280604af8a0004e"
+    },
+    {
+      "path": "src/games/binaryShift/logic.js",
+      "sha256": "636727b07e9a8c3e1c4012bb71c560f8e0e9cad72ba5c10e978081d8be569fcc"
+    },
+    {
+      "path": "src/games/binaryShift/stats.js",
+      "sha256": "ca758bd0b6ad4110f131fe573b3576a2a91ad0576bb029dd1c461aa8fb23b58e"
+    },
+    {
+      "path": "src/games/blackboardMoves/BlackboardMoves.jsx",
+      "sha256": "4ea24fa253852c95d983178bb23e4fc702075278ade20e733869c517de747209"
+    },
+    {
+      "path": "src/games/blackboardMoves/challenges.js",
+      "sha256": "861bc415802e2deabdc39a0497076daede2151b058502ec2caaf2aa218dc719a"
+    },
+    {
+      "path": "src/games/blackboardMoves/logic.js",
+      "sha256": "a52447b9d4315e285a4cbab1d8aae3e38c8139cbe93b7554fc4130a8e7dcf501"
+    },
+    {
+      "path": "src/games/blackboardMoves/stats.js",
+      "sha256": "a96bbb224c4cf44c5904f506012f9139560b9ecca9d6fef89522cbbdfaef753d"
+    },
+    {
+      "path": "src/games/gridDominion/GridDominion.jsx",
+      "sha256": "8ec546662a4755e9212d37bbd4f4b142f85f8fd26ad6b0c2c905d8e7094c5767"
+    },
+    {
+      "path": "src/games/gridDominion/ai.js",
+      "sha256": "ac116f9ee3db457ed9f18d94821f78886eb339b9af3c0e2262fb5ec720a52895"
+    },
+    {
+      "path": "src/games/gridDominion/campaign.js",
+      "sha256": "4d3703848effe807c7b2d66af67547b9d9f0654ee543a82bdec1ecd997a685b2"
+    },
+    {
+      "path": "src/games/gridDominion/logic.js",
+      "sha256": "7b745b69bf20692a1133ba13cdc73589a2d19f099bab7f3051a493363999e049"
+    },
+    {
+      "path": "src/games/gridDominion/stats.js",
+      "sha256": "883f98a519e3e31eff0c05f19e7c0bd12195ddb2cfc5bbf863a7d8078aaa67e8"
+    },
+    {
+      "path": "src/games/languageLabyrinth/LanguageLabyrinth.jsx",
+      "sha256": "2458dd91385841c07c7d0cf3939b54167fa837701eee660c346b94d4540c4fb4"
+    },
+    {
+      "path": "src/games/languageLabyrinth/audit.js",
+      "sha256": "c6e66fa32b8d7e59c0147a5c233852e4c38fe9150e54e43677b919e1d4955a0e"
+    },
+    {
+      "path": "src/games/languageLabyrinth/challenges.js",
+      "sha256": "a87ff82378a18c5e1c0ebcb0ff77f3048b14ac9be4eb640345a2c46a3de950cb"
+    },
+    {
+      "path": "src/games/languageLabyrinth/logic.js",
+      "sha256": "47a121750a054cd06b7e0039953055850e3fd33d1a57bb5af81ec1d878f36728"
+    },
+    {
+      "path": "src/games/languageLabyrinth/stats.js",
+      "sha256": "7eb60353d0a6bcb717908a845848ee9ccb44b57ba70a7ea6133b66525f60f748"
+    },
+    {
+      "path": "src/games/loopStrings/LoopStrings.jsx",
+      "sha256": "4abc95ec08ec3eb66f2e664430b004616ac49ecd028f71b6c92c96f2c2cb77ae"
+    },
+    {
+      "path": "src/games/loopStrings/challenges.js",
+      "sha256": "32533668988ca4b26c8609bd59d486cdfef83fa5d4803250d2a3768294caf590"
+    },
+    {
+      "path": "src/games/loopStrings/logic.js",
+      "sha256": "eb1906663b050584f2dcd3b7c17e9541a132a4b7fd2a20d8a811c5029ebe048e"
+    },
+    {
+      "path": "src/games/loopStrings/stats.js",
+      "sha256": "fd9f6ad038aebe64b0ef7c2bb72c5efc959abdc2baa3ccac6e28c390065827a3"
+    },
+    {
+      "path": "src/games/numberForge/NumberForge.jsx",
+      "sha256": "0e13be4d95f71751fdea21762e3c05abd19118c4adfa980f3caf874a300ef0a1"
+    },
+    {
+      "path": "src/games/numberForge/challenges.js",
+      "sha256": "e704b31004d91398707d3ebea8aaf9bd01612443044a43cdebabeea8af0a41bf"
+    },
+    {
+      "path": "src/games/numberForge/logic.js",
+      "sha256": "3abfda3b9568c20491c9c575bab72a976a305e730a1740b434676e922ecd3724"
+    },
+    {
+      "path": "src/games/numberForge/stats.js",
+      "sha256": "bbceebd4cde0ae4c090b0891a4f0b006a9698d30c0f22742ba5799bb0f9c0958"
+    },
+    {
+      "path": "src/games/parityEngine/ParityEngine.jsx",
+      "sha256": "897dd7972e20a1c7f03b6cd7bc5432d9cf69e54dcff2b6c30b1a74f71217c0cf"
+    },
+    {
+      "path": "src/games/parityEngine/challenges.js",
+      "sha256": "32a8f6790542485c37edc02de2654e560c926ed13defb69ff6472fa339dce60b"
+    },
+    {
+      "path": "src/games/parityEngine/logic.js",
+      "sha256": "c257b7826f1c98ef047dfb2db1857f331b6c352e58826310baff1b21fb25042c"
+    },
+    {
+      "path": "src/games/parityEngine/stats.js",
+      "sha256": "0f7368515ade53cbef0c351da5fe41426c0e7af7824429dd1c9d54f55d21d703"
+    },
+    {
+      "path": "src/games/temporalGraphs/TemporalGraphs.jsx",
+      "sha256": "8f464e73fbab77c88018c6993a1efa9c69027b39c1237cdc28600f41b7c9e4f4"
+    },
+    {
+      "path": "src/games/temporalGraphs/challenges.js",
+      "sha256": "a9b7f28605c546f085f6ebbdd39a82c1d1a032b4268f3c80f5743f7b01dd824e"
+    },
+    {
+      "path": "src/games/temporalGraphs/data.js",
+      "sha256": "592ae1c15fc72bfd76c4e52e736605cc0a1a9784a0762a5525e8ce874ba8d570"
+    },
+    {
+      "path": "src/games/temporalGraphs/editor.js",
+      "sha256": "6c4fd6a73f30720bdfbfde1e3803b1b0440236996cd13b6ebec608e259ed0fde"
+    },
+    {
+      "path": "src/games/temporalGraphs/lattice.js",
+      "sha256": "5ad34d1d41cc73b784837049ca77ebfe71e4c57240c7172b4498f51138b5efae"
+    },
+    {
+      "path": "src/games/temporalGraphs/logic.js",
+      "sha256": "710e1192483f5067384d663e4b6a75ffcba5b8b60cc6e1099ea05b18a11ef048"
+    },
+    {
+      "path": "src/games/temporalGraphs/presets.js",
+      "sha256": "464811ff3abaaf38dbe7e2ec63ca0e9f9a1f7341b5b8c1b095685949180864bb"
+    },
+    {
+      "path": "src/games/temporalGraphs/stats.js",
+      "sha256": "5ee684cc957ee996622767908f91a75e2dd4d47c6733152b3a509920b4fd024a"
+    },
+    {
+      "path": "src/main.jsx",
+      "sha256": "21ad60c868b8a8388c32fa4faf1bc54f716fdade66e2d3c574436c8dc499d22a"
+    },
+    {
+      "path": "src/maker.css",
+      "sha256": "e181ae9fdda1e929af9a4a212b944fb1980b0342b9953d073eb6b5c45bc3665a"
+    },
+    {
+      "path": "src/pages/Lobby.jsx",
+      "sha256": "f1cfff8c099de6e66168b0eb5008bb2ea5c42bc4bbc7474a85188c13f6f039bc"
+    },
+    {
+      "path": "src/pages/lobbyData.js",
+      "sha256": "8ab63128dc818c8bd0f8db9a99ef4d71041693850dd3ca57619fd8a558937d2c"
+    },
+    {
+      "path": "src/polish.css",
+      "sha256": "b6bab0099eef8dc430d870aa433975df94715474dadbf827c8c725624836346d"
+    },
+    {
+      "path": "src/profile/profile.js",
+      "sha256": "af49e0d19c406e8e1eff79718ee926bfd4622e8c1aced488f5e0aafc659fd9bc"
+    },
+    {
+      "path": "src/research/editorial.js",
+      "sha256": "d4a9b97dc26ff8b1c213dd63b5dbf46bc45f317b25b7411749033f71e65e3677"
+    },
+    {
+      "path": "src/research/mathNotation.js",
+      "sha256": "3b06d708f2e69421f7c95781a3b9349fb0ec22e291c14ccb3d468fb11dfb6939"
+    },
+    {
+      "path": "src/research/researchModel.js",
+      "sha256": "1e53a57205937609473ed9685782738a55710d3be21e372a1f1f025e3f598078"
+    },
+    {
+      "path": "src/styles.css",
+      "sha256": "92fa989d7c64a5566ec3213702411bfc7d8c1b715b66079b55b6d464fd93cccb"
+    },
+    {
+      "path": "test/arcadeProfile.test.js",
+      "sha256": "f60ac9255b7d7b0c36504f4c54a64735971b43e15c38a590293f580751011d71"
+    },
+    {
+      "path": "test/binaryShift.test.js",
+      "sha256": "99e0fbcc20d7477e3f48706b885e688cd9ffbd7ee50c5b9efc76d1f91eeb566f"
+    },
+    {
+      "path": "test/blackboardMoves.test.js",
+      "sha256": "977469d14f1a03e56bdd9ff3a01537391bb818d42774c8c32e6755a6b391549b"
+    },
+    {
+      "path": "test/gridDominion.test.js",
+      "sha256": "8ac8a9607dbf7843d0ae4ce4e92c8d2eac2c693389ab936a16dc1692f0bb2fa7"
+    },
+    {
+      "path": "test/gridDominionCampaign.test.js",
+      "sha256": "994c3a5f41cea69618ee898ff831c1760d0b10dd70e857fa07d6c5a13e7f1d5f"
+    },
+    {
+      "path": "test/gridDominionOracle.test.js",
+      "sha256": "4b5f24acec9b34acd95b3d89e763c8d0a3109399498ad33b5c031e2743a166db"
+    },
+    {
+      "path": "test/gridDominionStats.test.js",
+      "sha256": "dcdae72ba3cda9484d59e8f51e2aa317584181a14b9c5acfb2f980d27fa3ee77"
+    },
+    {
+      "path": "test/helpers/gridDominionOracle.js",
+      "sha256": "7834064ffe772f0aabe9897d5a3a67071d87660378f679d87e5089f78c4f08ed"
+    },
+    {
+      "path": "test/languageLabyrinth.test.js",
+      "sha256": "c0a21579be515646c1f4916e3dc0e31b62b6ddcab9d05c2a913a82f24c7e79b3"
+    },
+    {
+      "path": "test/languageLabyrinthRC1.test.js",
+      "sha256": "2e85224df83bb02a2cdfb4083ac2295f64ea406910ac6888d38e85d05a67667f"
+    },
+    {
+      "path": "test/loopStrings.test.js",
+      "sha256": "add1bf35cf52d6ef5ac535dcf6eb795c95c92e2729fbc824dc02510df5cfc18e"
+    },
+    {
+      "path": "test/mathematicalVerification.test.js",
+      "sha256": "54e038cadadbc5e82df6c91fff72fd9ae2c6fb0106e63e12912507f91ac0ef76"
+    },
+    {
+      "path": "test/numberForge.test.js",
+      "sha256": "688e98aaa04afde5ba2b6f53635bb16efed2e77037dd03f3c10d2039fbcb9623"
+    },
+    {
+      "path": "test/parityEngine.test.js",
+      "sha256": "e19940cea77e1e0f18e3688f50f75f94f93c7ba25ce7ed879e198f5ba1b78124"
+    },
+    {
+      "path": "test/releaseAdversarial.test.js",
+      "sha256": "7cb624ae5c720f349a00493b431f9a74ed12f0992b36ecf29e00710240d57107"
+    },
+    {
+      "path": "test/saveIntegrity.test.js",
+      "sha256": "012bcf8b3b9f1f27a2bd4c5319a5a8abd97b07d113c4cb885cfeae57518c27c5"
+    },
+    {
+      "path": "test/temporalGraphs.test.js",
+      "sha256": "38bcdd2116bbebc74f6beee5d5eb50a5f3363b7be35cca36c40ea03a19a37e92"
+    },
+    {
+      "path": "src/research/catalog.json",
+      "sha256": "6cd1a704a8f9f22592c76bc78890ee415ab581354849825eba96fd78c1207d47"
+    },
+    {
+      "path": "src/research/notebook-pages.json",
+      "sha256": "e57ca9f85ca4a4748377589f1d6a8cbb6891687e1f7cf783cd566bfd52bf2217"
+    },
+    {
+      "path": "src/research/dossiers.js",
+      "sha256": "6f651f9e625f89cc4fa5f06050ac1264111b269ee1a5014bf95cf555c5a102db"
+    }
+  ]
+}

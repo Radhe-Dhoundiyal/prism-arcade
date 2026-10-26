@@ -1,0 +1,13 @@
+/* RC2.1 refines reading and mobile density without changing the arcade layout. */
+.math-equation { margin: 16px 0; min-width: 0; }
+.math-equation math { font-size: 1.3rem; color: #e6fff5; margin: 12px 0; }
+.math-equation figcaption { color: #bed0df; font: 0.85rem/1.55 system-ui, sans-serif; max-width: 75ch; }
+.derivation-steps code { display: block; overflow-wrap: anywhere; font-size: 0.85rem; line-height: 1.65; }
+.research-provenance > p { max-width: 85ch; }
+@media (max-width: 640px) {
+  .lobby-page .lobby-stats { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .lobby-page .lobby-stats > div { padding: 10px; min-height: 68px; }
+  .lobby-page .lobby-stats span { font-size: 0.65rem; line-height: 1.3; min-height: 1.7em; }
+  .lobby-page .lobby-stats strong { font-size: 1.25rem; }
+  .math-equation math { font-size: 1.1rem; }
+}

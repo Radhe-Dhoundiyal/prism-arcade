@@ -1,0 +1,30 @@
+[
+  {
+    "path": "docs/media/lobby.png",
+    "sha256": "ff0a0760b1e3f2c244ca3bee561156c81108cb16b1ae5660797efc7d87b62b33",
+    "bytes": 602326,
+    "width": 1440,
+    "height": 1000
+  },
+  {
+    "path": "docs/media/language.png",
+    "sha256": "5ba9dbebbb14f9598a370531eb0b4a809e4a760057264d6f32dd492f8ec0373f",
+    "bytes": 458689,
+    "width": 1440,
+    "height": 1000
+  },
+  {
+    "path": "docs/media/blackboard.png",
+    "sha256": "1bcb9f699c7cce6ebf6e3edb742b049f0c0898224d8bc75c929e39793a174e4b",
+    "bytes": 94748,
+    "width": 1440,
+    "height": 1000
+  },
+  {
+    "path": "docs/media/loops.png",
+    "sha256": "82ef0cc9fc18e1bbad2bea6d810591a65e2c0fd9ef6fd5151f608f59aea1a6cc",
+    "bytes": 130536,
+    "width": 1440,
+    "height": 1000
+  }
+]

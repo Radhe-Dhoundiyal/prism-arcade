@@ -1,0 +1,33 @@
+{
+  "name": "prism-arcade",
+  "private": true,
+  "version": "0.3.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test \"test/**/*.js\"",
+    "test:math": "node --test test/mathematicalVerification.test.js test/gridDominionOracle.test.js",
+    "test:save": "node --test test/saveIntegrity.test.js test/arcadeProfile.test.js",
+    "verify:content": "node scripts/verify-content.mjs",
+    "smoke": "node scripts/smoke-maker.mjs",
+    "smoke:research": "node scripts/smoke-research.mjs",
+    "verify:assets": "node scripts/research-assets.mjs",
+    "test:publication": "node --test test/publicSuccessor.test.js"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "vite": "^7.1.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0",
+    "playwright": "^1.64.1"
+  }
+}
