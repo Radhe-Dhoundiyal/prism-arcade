@@ -157,7 +157,7 @@ export default function ResearchPanel({ portalId }) {
       <footer className="research-provenance"><h3>Provenance</h3><p>Historical investigations and later mathematical corrections are documented separately. Source Details records the original references, public editions and verification history. See <a href="https://github.com/Radhe-Dhoundiyal/prism-arcade/blob/main/docs/provenance.md" target="_blank" rel="noreferrer">provenance and attribution</a>.</p>
         <p>Research links open labeled public editions where included. Unmodified historical originals and the official problem-set PDF are not distributed. Source Details distinguishes original and derivative hashes.</p>
         <p><a href="https://www.prism-india.org/" target="_blank" rel="noreferrer">PRISM India official website</a></p>
-        <p>Research editions and media have separate rights. Third-party material and future asset hosting require separate permission; see the <a href="/research-rights.txt" target="_blank" rel="noreferrer">research-rights notice</a>.</p>
+        <p>Research editions and media have separate rights. Third-party and held material require separate permission; see the <a href="/research-rights.txt" target="_blank" rel="noreferrer">research-rights notice</a>.</p>
         <details><summary>Source Details / hashes and correction history</summary>
           <p>{record.authorship}</p><p>{record.claimStatus}</p>
           <ul>{record.assets.map((asset) => <li key={asset.url}><ResearchAssetLink href={asset.url} target="_blank" rel="noreferrer">{asset.originalFile}</ResearchAssetLink>

@@ -31,7 +31,7 @@ All eight are playable. Portal coverage is 100%; personal challenge completion i
 
 Seven public notebook editions preserve 72 source-page positions. Statement omissions and new editorial context are labeled; the authenticated originals remain private. Seven solution editions retain the historical mathematics, including mistakes. Problem 8 has no supplied notebook or completed historical manuscript.
 
-The research editions are prepared separately and are not yet publicly hosted. Their hash-verified asset package is not included in this repository. The source-only application shows meaningful availability notices; it does not provide live notebook downloads. Future research hosting is a separate step. See [research delivery](docs/research-availability.md).
+The approved research editions are hosted separately on Vercel Blob and integrated into the [live Research Journey](https://prism-arcade-live.vercel.app/). All 87 hosted files were independently checked against the pinned manifest. This repository contains code and lightweight metadata; the 187 MiB research payload stays outside Git and the application deployment. Source-only builds retain availability notices. See [research delivery](docs/research-availability.md).
 
 Read the [Language Labyrinth](docs/corrections/language-labyrinth.md), [Temporal Graphs](docs/corrections/temporal-graphs.md) and [Number Forge](docs/corrections/number-forge.md) correction dossiers alongside the historical work, not as silent replacements for it.
 
