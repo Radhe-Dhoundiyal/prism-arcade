@@ -14,7 +14,7 @@ export default defineConfig(() => {
   validateResearchDirectory('public');
   if (assets) verifyAssetPackage(assets);
   if (baseUrl) availableResearchHref('/research/problem-1-rough.pdf',{mode:'public-editions',baseUrl});
-  const enabled=Boolean(assets);
+  const enabled=Boolean(assets || baseUrl);
   const editionPaths=new Set(PUBLIC_RESEARCH_EDITIONS.files.map(asset=>asset.url));
   const manifestPath='/research/'+PUBLIC_RESEARCH_EDITIONS.version+'/manifest.json';
   const mime={'.pdf':'application/pdf','.webp':'image/webp','.tex':'application/x-tex','.json':'application/json'};
@@ -32,11 +32,11 @@ export default defineConfig(() => {
   };
   const researchPlugin = {
     name:'public-research-editions',
-    configureServer(server){server.middlewares.use(protectResearch(enabled?assets:'public',true));},
+    configureServer(server){server.middlewares.use(protectResearch(assets || 'public',true));},
     configurePreviewServer(server){server.middlewares.use(protectResearch(path.resolve(server.config.root,server.config.build.outDir),true));},
     writeBundle(options) {
       const dir=options.dir;
-      if (enabled) installAssetPackage(assets,dir);
+      if (assets && !baseUrl) installAssetPackage(assets,dir);
       fs.copyFileSync('notices/dependencies.txt',path.join(dir,'third-party-notices.txt'));
       fs.copyFileSync('LICENSE',path.join(dir,'license.txt'));
       fs.copyFileSync('RESEARCH_NOTICE.md',path.join(dir,'research-rights.txt'));

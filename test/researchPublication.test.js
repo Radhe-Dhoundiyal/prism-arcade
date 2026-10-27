@@ -108,3 +108,27 @@ it('production preview serves public TeX with an explicit content type',()=>{
     assert.equal(status,200);assert.equal(headers['Content-Type'],'application/x-tex');assert.equal(ended,true);
   }finally{fs.rmSync(directory,{recursive:true});}
 });
+
+it('remote-only builds enable pinned editions and rewrite dossiers without copying the payload',()=>{
+  const previous={assets:process.env.PRISM_RESEARCH_ASSETS_DIR,base:process.env.VITE_RESEARCH_ASSET_BASE_URL};
+  const directory=fs.mkdtempSync(path.join(os.tmpdir(),'prism-remote-build-'));
+  try{
+    delete process.env.PRISM_RESEARCH_ASSETS_DIR;
+    process.env.VITE_RESEARCH_ASSET_BASE_URL='https://example.org';
+    const config=configure();
+    assert.equal(config.define['import.meta.env.VITE_RESEARCH_ASSET_MODE'],'"public-editions"');
+    const corrections=path.join(directory,'research/corrections');fs.mkdirSync(corrections,{recursive:true});
+    fs.writeFileSync(path.join(corrections,'fixture.md'),'[Notebook](/research/availability.html?source=%2Fresearch%2Fproblem-1-rough.pdf)');
+    config.plugins.find(plugin=>plugin.name==='public-research-editions').writeBundle({dir:directory});
+    assert.match(fs.readFileSync(path.join(corrections,'fixture.md'),'utf8'),/https:\/\/example.org\/research\/v1\/problem-1-notebook.pdf/);
+    assert.equal(fs.existsSync(path.join(directory,'research/v1')),false);
+    assert.equal(availableResearchHref('/research/problem-1-rough.pdf',{mode:'public-editions',baseUrl:process.env.VITE_RESEARCH_ASSET_BASE_URL}),'https://example.org/research/v1/problem-1-notebook.pdf');
+    delete process.env.VITE_RESEARCH_ASSET_BASE_URL;
+    assert.equal(configure().define['import.meta.env.VITE_RESEARCH_ASSET_MODE'],'"withheld"');
+    process.env.VITE_RESEARCH_ASSET_BASE_URL='https://user:secret@example.org';
+    assert.throws(()=>configure(),/approved HTTPS/);
+  }finally{
+    for(const [name,value] of [['PRISM_RESEARCH_ASSETS_DIR',previous.assets],['VITE_RESEARCH_ASSET_BASE_URL',previous.base]]){if(value===undefined)delete process.env[name];else process.env[name]=value;}
+    fs.rmSync(directory,{recursive:true});
+  }
+});
