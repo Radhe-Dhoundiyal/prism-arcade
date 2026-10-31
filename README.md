@@ -2,6 +2,14 @@
 
 PRISM Arcade turns eight PRISM India problems into interactive mathematical experiments. Explore binary rotations, probability, graph games and formal languages; test conjectures, inspect counterexamples and follow the reasoning behind the results.
 
+## My role and development process
+
+I began by investigating the PRISM India problems on paper, developing solutions, conjectures and proof attempts. Those investigations shaped the direction and mathematical purpose of the interactive games and experiments. The software gave me a way to explore strategies, test examples and examine counterexamples.
+
+I used AI tools, including Codex, for software implementation, debugging, later mathematical verification and editorial preparation. The notebooks retain my historical claims, including mistakes; later verification and corrections are documented separately. See [provenance](docs/provenance.md) for the attribution and source history.
+
+In Language Labyrinth, my original conclusion was incorrect. Later computational investigation and verification established that exactly eight generated palindromes of length 10 contain both `a` and `b`. This is a finite counting result, not a classification of all generated palindromes. The [correction dossier](docs/corrections/language-labyrinth.md) explains the counterexamples and the verification.
+
 ## Preview
 
 | Eight playable portals | A verified Language Labyrinth witness |

@@ -12,35 +12,23 @@ Mathematical correction dossier. Historical originals remain private; this docum
 - [Original rough notebook, page 7: partitioned rectangle and repeated wins](../../public/research/availability.html?source=%2Fresearch%2Fproblem-6-rough.pdf%23page%3D7) - Original reference: `/research/problem-6-rough.pdf#page=7`.
 - [Original rough notebook, page 8: unbounded conclusion](../../public/research/availability.html?source=%2Fresearch%2Fproblem-6-rough.pdf%23page%3D8) - Original reference: `/research/problem-6-rough.pdf#page=8`.
 
-## 1. Question and context
+## The question: first-time wins
 
 One participant joins per day and owns one previously unassigned undirected unit edge. Integer-coordinate endpoints are required in the lattice version. An owner wins as soon as their endpoints have a simple path made entirely of edges assigned on strictly later days. The corrected result concerns participants becoming winners on the same day; the cumulative number of winners is a different quantity.
 
-
-
-
-## 2. Original claim and source
+## The original ladder claim
 
 The original Problem 6 TeX claims no finite maximum of simultaneous winners, including the lattice case. Its Construction section builds early vertical rungs, later horizontal rails, and a final far-end vertical trigger. The final Conclusion says arbitrarily many players win on the same day.
 
-
-
-
-## 3. Evidence-supported development
+## What the original work records
 
 The Exploration and first observations section starts with loops, then looks for one trigger that benefits many earlier participants. Its Winning criterion correctly expresses the rule as later-edge connectivity, and Steps 1-3 give the ladder construction. Notebook page 7 describes earlier owners winning again while another wins for the first time; page 8 concludes that simultaneous winners are unbounded. The distinction needed for the correction is visible in those pages.
 
-
-
-
-## 4. Exact failure of the ladder argument
+## Why the ladder argument failed
 
 Number early rungs by k=0..N-1 in their assignment order. After all rails are present but before the far-end trigger, every rung k<N-1 already has a later-only path: go along the bottom rail to rung k+1, cross that later rung, and return along the top rail. All these edges joined later than rung k. Existence of another path via the final trigger does not prove its owner first wins then. Only the latest early rung may newly win on the final day.
 
-
-
-
-## 5. Small counterexample to the intended timing
+## A two-rung counterexample
 
 Every listed edge is unique, has length 1, and has integer-coordinate endpoints. This N=2 example isolates the failure without using duplicate days or invalid diagonals.
 
@@ -50,15 +38,11 @@ Every listed edge is unique, has length 1, and has integer-coordinate endpoints.
 4. `Day 5: bottom (1,0)-(2,0). Day 6: top (1,1)-(2,1).`
 5. `Day 7: final rung (2,0)-(2,1). Day-2 owner now wins via edge days 5,7,6. Day-1 owner is not a new winner. Cumulative winners=2; newly winning owners=1.`
 
-
-## 6. Corrected theorem
+## The corrected theorem
 
 At most one participant becomes a winner on any day. The bound is attained by a unit square, both with and without the lattice restriction. Cumulative winners over many days can be arbitrarily numerous, for example by completing disjoint squares successively.
 
-
-
-
-## 7. Complete reverse-forest proof
+## The reverse-forest proof
 
 Fix a finite daily prefix graph with E edges, V incident vertices and k connected components. Process its edges in decreasing join-day order. Maintain connected components, accepting an edge exactly when it joins different components. An edge is rejected exactly when its endpoints already connect through later edges, so exactly its owner is a winner.
 
@@ -70,26 +54,14 @@ An existing winner keeps its witnessing later-edge path when another edge is add
 
 Attainment: assign the four sides of a unit square on four consecutive days. When the fourth side arrives, the first side has the simple alternative path using days 2,3,4, and it is the only newly winning owner. The construction also works without the lattice restriction. Therefore the maximum newly winning count is exactly 1.
 
-
-
-
-## 8. Consequence for the answer
+## First-time and cumulative winners
 
 For simultaneous first-time wins, the answer is 1 in both versions. For all owners who have won by a given date, no fixed bound exists. The manuscript establishes final-day connectivity for many owners, which addresses the latter cumulative count, not its claimed simultaneous first-time event.
 
-
-
-
-## 9. Reasoning lesson
+## Why the timing matters
 
 Finding a path on the last day does not show that it first became valid then. Checking earlier prefixes separates new winners from owners who had already won. The forest identity bounds how many new winners one edge can create.
 
-
-
-
-## 10. Correction history
+## How the correction was checked
 
 The correction distinguishes newly winning owners from cumulative winners. Software targets were corrected to 1 and checked against 2,709 independent graph-prefix cases. The failed construction remains documented in the historical work.
-
-
-

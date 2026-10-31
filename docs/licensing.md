@@ -10,7 +10,7 @@ Upstream dependency copyright and license notices remain applicable to their own
 
 No organizer problem prose, figures or historical private originals are licensed by this project. Public editions omit identified statement regions and recreated organizer figures. This editorial risk reduction is not a legal determination or a representation that no third-party rights can apply.
 
-The separate research package has not been publicly hosted and is not included in this source release. Any future publication of manuscripts, notebook editions or held material requires its own authorization and applicable rights review. Git author metadata alone is not a statement of legal ownership.
+The approved public research editions are hosted separately on Vercel Blob and integrated into the [live application](https://prism-arcade-live.vercel.app/); the asset package is not included in this source repository. Publication does not place the editions under MIT or grant additional reuse rights. Private historical originals and held third-party material remain excluded. Future editions or held material require separate authorization and applicable rights review. Git author metadata alone is not a statement of legal ownership.
 
 The unchanged research-edition manifest retains its historical preparation-stage reference to a proposed software license. That frozen provenance wording does not supersede the current software grant in the root LICENSE or extend it to research content.
 
