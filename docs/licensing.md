@@ -1,6 +1,6 @@
 # License Scope
 
-The [MIT License](../LICENSE) applies to eligible software rights held by Radhe Dhoundiyal. The owner has confirmed that Radhe Dhoundiyal is the sole human contributor and has authorized this grant for the software rights they hold. AI assistance is acknowledged in [provenance](provenance.md); this notice does not claim exclusive copyright over non-protectable material or rights belonging to others.
+The [MIT License](../LICENSE) applies to software rights that Radhe Dhoundiyal can license. Research material and third-party content have separate rights, explained below.
 
 The eligible software scope includes application/interface code, styles, mathematical engines, workers, tests, build scripts, configuration and CI in `src/`, `scripts/`, `test/`, root build/package configuration and `.github/`, with the research-content exceptions below. `public/research/availability.html` is application presentation code. The standard MIT text is unmodified apart from its copyright-holder line.
 
