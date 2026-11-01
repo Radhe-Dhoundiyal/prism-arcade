@@ -41,7 +41,15 @@ Seven public notebook editions preserve 72 source-page positions. Statement omis
 
 The approved research editions are hosted separately on Vercel Blob and integrated into the [live Research Journey](https://prism-arcade-live.vercel.app/). All 87 hosted files were independently checked against the pinned manifest. This repository contains code and lightweight metadata; the 187 MiB research payload stays outside Git and the application deployment. Source-only builds retain availability notices. See [research delivery](docs/research-availability.md).
 
-Read the [Language Labyrinth](docs/corrections/language-labyrinth.md), [Temporal Graphs](docs/corrections/temporal-graphs.md) and [Number Forge](docs/corrections/number-forge.md) correction dossiers alongside the historical work, not as silent replacements for it.
+### Follow a problem from notebook to game
+
+The [Research Journey](https://prism-arcade-live.vercel.app/) pairs edited editions of the earlier notebook investigations with the interactive portals. Three short accounts show where the reasoning or software changed:
+
+- **Language Labyrinth:** [the original zero-answer argument, a constructed palindrome, and the later finite count](docs/corrections/language-labyrinth.md).
+- **Temporal Graphs:** [why a ladder construction counted owners who had already won, rather than first-time winners](docs/corrections/temporal-graphs.md).
+- **Number Forge:** [how a later software reduction missed reachable numbers, and a sufficient condition for using it](docs/corrections/number-forge.md).
+
+The original notes are preserved separately from these later corrections. The Number Forge issue concerns the later software generalization, not a claim in the original notebook.
 
 ## Implementation
 
