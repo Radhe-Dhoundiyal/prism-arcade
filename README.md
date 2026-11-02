@@ -2,6 +2,8 @@
 
 PRISM Arcade turns eight PRISM India problems into interactive mathematical experiments. Explore binary rotations, probability, graph games and formal languages; test conjectures, inspect counterexamples and follow the reasoning behind the results.
 
+**Live demo:** [Play all eight PRISM Arcade portals](https://prism-arcade-live.vercel.app/).
+
 ## My role and development process
 
 I began by investigating the PRISM India problems on paper, developing solutions, conjectures and proof attempts. Those investigations shaped the direction and mathematical purpose of the interactive games and experiments. The software gave me a way to explore strategies, test examples and examine counterexamples.
