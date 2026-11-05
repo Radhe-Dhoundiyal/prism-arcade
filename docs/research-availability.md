@@ -39,4 +39,4 @@ Clear this variable and `PRISM_RESEARCH_ASSETS_DIR` for source-only mode. A loca
 
 For the published collection, `node scripts/retrieve-research.mjs https://OWNER-APPROVED-BASE NEW-DIRECTORY` retrieves the pinned package. It requires an explicit HTTPS base, rejects redirects and existing destinations, verifies manifest/length/hash pins and publishes the local directory only after verification. Failed partial downloads remain recognizable `.partial-*` directories. Unit tests use injected transport and do not contact the real host. Browser checks can exercise the CDN by setting `VITE_RESEARCH_ASSET_BASE_URL` alongside `PRISM_RESEARCH_TEST_MODE=public-editions`. Run `verify:assets` again before building.
 
-[PRISM India](https://www.prism-india.org/) is the official external reference, not evidence of permission to redistribute organizer material. Final ownership, edition acceptance, reuse terms and release authority remain owner decisions.
+See the [research rights notice](../RESEARCH_NOTICE.md) for reuse terms and excluded material.

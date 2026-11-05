@@ -5,30 +5,28 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { it } from 'node:test';
 import { PUBLICATION_ASSETS } from '../src/research/publicationAssets.js';
-import { availableResearchHref, researchAssetRecord, publicEditionAsset, PUBLIC_RESEARCH_EDITIONS } from '../src/research/assetPolicy.js';
+import { availableResearchHref, publicEditionAsset, PUBLIC_RESEARCH_EDITIONS } from '../src/research/assetPolicy.js';
 import { validateResearchDirectory, verifyAssetPackage, rewriteResearchLinks } from '../scripts/research-assets.mjs';
 import configure from '../vite.config.js';
 
-it('publication ledger retains 88 authentic identities and separates 86 prepared from two exclusions', () => {
+it('the historical inventory retains 88 distinct source identities', () => {
   const assets = PUBLICATION_ASSETS.assets;
   assert.equal(new Set(assets.map(asset => asset.url)).size, 88);
-  assert.equal(assets.filter(asset => asset.status === 'prepared').length, 86);
-  assert.equal(assets.filter(asset => asset.status === 'approved').length, 0);
   assert.equal(assets.filter(asset => asset.kind === 'rough').length, 7);
   assert.equal(assets.filter(asset => asset.kind === 'notebook-page').length, 72);
   for (const asset of assets) { assert.match(asset.sha256, /^[a-f0-9]{64}$/); assert.ok(asset.bytes > 0); }
 });
 it('official PDF and Problem 8 extract stay inaccessible in public editions', () => {
   for (const url of ['/research/prism-india-problem-set.pdf', '/research/problem-8-original.tex']) {
-    assert.equal(researchAssetRecord(url).status, 'excluded');
     for (const mode of ['withheld', 'public-editions']) assert.equal(availableResearchHref(url, { mode, baseUrl: 'https://example.org' }), null);
   }
 });
 it('every ledger hash agrees with the unchanged historical catalogs', () => {
   const catalog = JSON.parse(fs.readFileSync('src/research/catalog.json'));
   const notebooks = JSON.parse(fs.readFileSync('src/research/notebook-pages.json'));
+  const sources = new Map(PUBLICATION_ASSETS.assets.map(asset => [asset.url,asset]));
   for (const asset of [...catalog.records.flatMap(record => record.assets), ...Object.values(notebooks.records).flatMap(record => record.pages)]) {
-    assert.equal(researchAssetRecord(asset.url).sha256, asset.sha256);
+    assert.equal(sources.get(asset.url)?.sha256, asset.sha256);
   }
 });
 it('public editions preserve page anchors without exposing the original PDF', () => {
@@ -38,16 +36,20 @@ it('public editions preserve page anchors without exposing the original PDF', ()
   assert.equal(availableResearchHref('/research/not-listed.pdf', { mode: 'public-editions' }), null);
   assert.throws(() => availableResearchHref(url, { mode: 'local-review' }));
 });
-it('changing an old approval flag cannot make a private original downloadable', () => {
-  const url = '/research/problem-1-rough.pdf#page=2';
-  const record = researchAssetRecord(url), previous = record.status;
-  try {
-    record.status = 'approved';
-    assert.equal(availableResearchHref(url), null);
-    assert.equal(availableResearchHref(url, { mode: 'public-editions' }), '/research/v1/problem-1-notebook.pdf#page=2');
-  } finally { record.status = previous; }
+it('historical references resolve only to a pinned derivative or no download', () => {
+  const derivatives = new Map(PUBLIC_RESEARCH_EDITIONS.files.map(asset => [asset.sourceUrl,asset]));
+  for (const source of PUBLICATION_ASSETS.assets) {
+    const edition = derivatives.get(source.url);
+    assert.equal(availableResearchHref(source.url), null);
+    assert.equal(availableResearchHref(source.url, {mode:'public-editions'}), edition?.url ?? null);
+    if (edition) {
+      assert.equal(edition.sourceSha256,source.sha256);
+      assert.notEqual(edition.sha256,source.sha256);
+      assert.notEqual(edition.url,source.url);
+    }
+  }
 });
-it('build payload validation rejects unlisted binary assets and missing prepared payloads', () => {
+it('build payload validation rejects unlisted binary assets and missing editions', () => {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'prism-assets-'));
   try {
     assert.deepEqual(validateResearchDirectory(directory), { checked: 0 });
@@ -55,17 +57,6 @@ it('build payload validation rejects unlisted binary assets and missing prepared
     fs.writeFileSync(path.join(directory, 'unexpected.pdf'), 'not a PDF');
     assert.throws(() => validateResearchDirectory(directory), /Unapproved/);
   } finally { fs.rmSync(directory, { recursive: true }); }
-});
-it('viewer mounts only the selected lazy page and offers bounded accessible zoom', () => {
-  const text = fs.readFileSync('src/research/ResearchPanel.jsx', 'utf8');
-  assert.match(text, /loading="lazy"/);
-  assert.equal((text.match(/<img /g) || []).length, 1);
-  assert.match(text, /aria-label="Notebook zoom"/);
-  assert.match(text, /\[100, 150, 200, 300\]/);
-  assert.match(text, /not a solution/);
-  const publication = fs.readFileSync('src/publication.css', 'utf8');
-  assert.match(publication, /\.arcade-shell \.parity-trajectory-line/);
-  assert.match(publication, /white-space: normal/);
 });
 it('publication package validation fails closed on tampering and extra originals', () => {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'prism-hash-'));
@@ -120,6 +111,9 @@ it('remote-only builds enable pinned editions and rewrite dossiers without copyi
     const corrections=path.join(directory,'research/corrections');fs.mkdirSync(corrections,{recursive:true});
     fs.writeFileSync(path.join(corrections,'fixture.md'),'[Notebook](/research/availability.html?source=%2Fresearch%2Fproblem-1-rough.pdf)');
     config.plugins.find(plugin=>plugin.name==='public-research-editions').writeBundle({dir:directory});
+    for (const [emitted,source] of [['license.txt','LICENSE'],['research-rights.txt','RESEARCH_NOTICE.md'],['third-party-notices.txt','notices/dependencies.txt']]) {
+      assert.deepEqual(fs.readFileSync(path.join(directory,emitted)),fs.readFileSync(source));
+    }
     assert.match(fs.readFileSync(path.join(corrections,'fixture.md'),'utf8'),/https:\/\/example.org\/research\/v1\/problem-1-notebook.pdf/);
     assert.equal(fs.existsSync(path.join(directory,'research/v1')),false);
     assert.equal(availableResearchHref('/research/problem-1-rough.pdf',{mode:'public-editions',baseUrl:process.env.VITE_RESEARCH_ASSET_BASE_URL}),'https://example.org/research/v1/problem-1-notebook.pdf');

@@ -1,4 +1,4 @@
-// Display copy is separate from the pinned mathematical and challenge records.
+// Display copy is separate from mathematical and challenge data.
 export const PORTAL_INTRODUCTIONS = {
   'binary-shift': 'Move the last binary digit to the front. When does that equal multiplication by n?',
   'parity-engine': 'Follow even and odd outcomes through a two-state Markov chain.',

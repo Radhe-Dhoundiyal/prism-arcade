@@ -23,21 +23,6 @@ function gcdMany(values) {
   return values.reduce((current, value) => gcdPair(current, value), 0);
 }
 
-function getSubsets(values) {
-  const subsets = [];
-  const limit = 2 ** values.length;
-
-  for (let mask = 1; mask < limit; mask += 1) {
-    const subset = values.filter((_, index) => mask & (1 << index));
-
-    if (subset.length >= 2) {
-      subsets.push(subset);
-    }
-  }
-
-  return subsets;
-}
-
 export function suggestModuli(generators) {
   const cleanGenerators = normalizeGenerators(generators);
   const structuralSuggestions = new Set();

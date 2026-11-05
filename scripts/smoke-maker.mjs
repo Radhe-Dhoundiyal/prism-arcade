@@ -64,7 +64,7 @@ try {
     assert.deepEqual(await page.locator('.lobby-stats strong').allTextContents(), ['8','8','100%']);
     assert.ok((await page.getByTestId('portal-card-problem-1').boundingBox()).y < 400);
     assert.equal(await page.locator('.lobby-secondary').getAttribute('open'), null);
-    await screenshot('lobby-desktop', 'Actual Maker candidate lobby, desktop; eight portals precede collapsed profile/settings.');
+    await screenshot('lobby-desktop', 'Desktop lobby showing all eight portals.');
     await accessibility('lobby-desktop');
   });
   await check('Lobby mobile 390 and tablet 768', async () => {

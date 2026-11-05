@@ -1,4 +1,3 @@
-import { PUBLICATION_ASSETS } from './publicationAssets.js';
 import editions from './public-editions.json' with { type: 'json' };
 
 export const RESEARCH_ASSET_POLICY = {
@@ -14,11 +13,6 @@ export function publicEditionAsset(reference) {
   validateReference(reference);
   const url = reference.split('#')[0];
   return editionFiles.get(url) ?? sourceEditions.get(url) ?? null;
-}
-
-export function researchAssetRecord(reference) {
-  validateReference(reference);
-  return PUBLICATION_ASSETS.assets.find(asset => asset.url === reference.split('#')[0]);
 }
 
 function validateReference(reference) {

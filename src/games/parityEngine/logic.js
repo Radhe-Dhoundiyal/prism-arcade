@@ -49,15 +49,6 @@ export function createTransitionMatrix({ pA, pB }) {
   ];
 }
 
-export function stepDistribution(distribution, matrix) {
-  const [even, odd] = distribution;
-
-  return [
-    even * matrix[0][0] + odd * matrix[1][0],
-    even * matrix[0][1] + odd * matrix[1][1],
-  ];
-}
-
 export function getDistributionAfterSteps({
   pA,
   pB,

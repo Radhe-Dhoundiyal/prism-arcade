@@ -4,11 +4,13 @@ PRISM Arcade turns eight PRISM India problems into interactive mathematical expe
 
 **Live demo:** [Play all eight PRISM Arcade portals](https://prism-arcade-live.vercel.app/).
 
-## My role and development process
+## From Notebook to Game
 
 I began by investigating the PRISM India problems on paper, developing solutions, conjectures and proof attempts. Those investigations shaped the direction and mathematical purpose of the interactive games and experiments. The software gave me a way to explore strategies, test examples and examine counterexamples.
 
 I used AI tools, including Codex, for software implementation, debugging, later mathematical verification and editorial preparation. The notebooks retain my historical claims, including mistakes; later verification and corrections are documented separately. See [provenance](docs/provenance.md) for the attribution and source history.
+
+Earlier software development took place in a private working repository in June 2026, before this public release.
 
 In Language Labyrinth, my original conclusion was incorrect. Later computational investigation and verification established that exactly eight generated palindromes of length 10 contain both `a` and `b`. This is a finite counting result, not a classification of all generated palindromes. The [correction dossier](docs/corrections/language-labyrinth.md) explains the counterexamples and the verification.
 
@@ -41,7 +43,7 @@ All eight are playable. Portal coverage is 100%; personal challenge completion i
 
 Seven public notebook editions preserve 72 source-page positions. Statement omissions and new editorial context are labeled; the authenticated originals remain private. Seven solution editions retain the historical mathematics, including mistakes. Problem 8 has no supplied notebook or completed historical manuscript.
 
-The approved research editions are hosted separately on Vercel Blob and integrated into the [live Research Journey](https://prism-arcade-live.vercel.app/). All 87 hosted files were independently checked against the pinned manifest. This repository contains code and lightweight metadata; the 187 MiB research payload stays outside Git and the application deployment. Source-only builds retain availability notices. See [research delivery](docs/research-availability.md).
+The [live Research Journey](https://prism-arcade-live.vercel.app/) loads the public editions on demand. The research files are hosted separately and stay outside Git; local builds without the package show availability notices. See [research delivery](docs/research-availability.md).
 
 ### Follow a problem from notebook to game
 
@@ -51,8 +53,6 @@ The [Research Journey](https://prism-arcade-live.vercel.app/) lets you compare e
 - **Number Forge:** The [original solution](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-3-solution.tex) works through residues modulo 3 for (9, 15, 25) and (9, 21, 49). The [reachability engine](src/games/numberForge/logic.js) and [tests](test/numberForge.test.js) explore these ideas. A [later correction](docs/corrections/number-forge.md) concerns a generalized software reduction, **not** an error in the original named-case work.
 - **Language Labyrinth:** [Notebook page 15](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/pages/language-labyrinth-15.webp) preserves my mistaken zero-answer argument. The [word generator](src/games/languageLabyrinth/logic.js) makes counterexamples testable; the [correction](docs/corrections/language-labyrinth.md) explains the later verification that exactly eight mixed palindromes have length 10.
 - **Temporal Graphs:** [Notebook page 7](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/pages/temporal-graphs-7.webp) records the ladder investigation. The [edge-trigger analysis](src/games/temporalGraphs/logic.js) distinguishes owners who win for the first time from those who already won; the [later correction](docs/corrections/temporal-graphs.md) explains the reverse-forest argument.
-
-The original notes remain separate from subsequent corrections. Earlier software development took place in a private working repository in June 2026; this public repository is a later curated release.
 
 ## Implementation
 

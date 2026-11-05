@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { AI_DIFFICULTIES, chooseAiMove, predictWinnerPerfectPlay } from './ai.js';
+import { AI_DIFFICULTIES, chooseAiMove } from './ai.js';
 import {
   CAMPAIGN_LEVELS,
   getCampaignStats,
