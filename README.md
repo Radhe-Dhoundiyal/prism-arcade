@@ -45,13 +45,14 @@ The approved research editions are hosted separately on Vercel Blob and integrat
 
 ### Follow a problem from notebook to game
 
-The [Research Journey](https://prism-arcade-live.vercel.app/) pairs edited editions of the earlier notebook investigations with the interactive portals. Three short accounts show where the reasoning or software changed:
+The [Research Journey](https://prism-arcade-live.vercel.app/) lets you compare edited public editions of my earlier mathematical notes with the experiments they informed. A few examples are easiest to trace directly:
 
-- **Language Labyrinth:** [the original zero-answer argument, a constructed palindrome, and the later finite count](docs/corrections/language-labyrinth.md).
-- **Temporal Graphs:** [why a ladder construction counted owners who had already won, rather than first-time winners](docs/corrections/temporal-graphs.md).
-- **Number Forge:** [how a later software reduction missed reachable numbers, and a sufficient condition for using it](docs/corrections/number-forge.md).
+- **Grid Dominion:** My [earlier notebook](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-4-notebook.pdf) and [solution](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-4-solution.tex) explore 180° rotation, opposite-color pairings, and edge balance. Compare the [edge-counting rules](src/games/gridDominion/logic.js), [playable game](https://prism-arcade-live.vercel.app/#grid-dominion), and [independent bounded search checks](test/gridDominionOracle.test.js). The Hard AI search is a later software feature.
+- **Number Forge:** The [original solution](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-3-solution.tex) works through residues modulo 3 for (9, 15, 25) and (9, 21, 49). The [reachability engine](src/games/numberForge/logic.js) and [tests](test/numberForge.test.js) explore these ideas. A [later correction](docs/corrections/number-forge.md) concerns a generalized software reduction, **not** an error in the original named-case work.
+- **Language Labyrinth:** [Notebook page 15](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/pages/language-labyrinth-15.webp) preserves my mistaken zero-answer argument. The [word generator](src/games/languageLabyrinth/logic.js) makes counterexamples testable; the [correction](docs/corrections/language-labyrinth.md) explains the later AI-assisted verification that exactly eight mixed palindromes have length 10.
+- **Temporal Graphs:** [Notebook page 7](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/pages/temporal-graphs-7.webp) records the ladder investigation. The [edge-trigger analysis](src/games/temporalGraphs/logic.js) distinguishes owners who win for the first time from those who already won; the [later correction](docs/corrections/temporal-graphs.md) explains the reverse-forest argument.
 
-The original notes are preserved separately from these later corrections. The Number Forge issue concerns the later software generalization, not a claim in the original notebook.
+These are links between mathematical ideas, later implementation, and checks—not claims that I personally typed every source file. The original notes remain separate from subsequent corrections. Earlier software development took place in a private working repository in June 2026; the public repository is a later curated release.
 
 ## Implementation
 
