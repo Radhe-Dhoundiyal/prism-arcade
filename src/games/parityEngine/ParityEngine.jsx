@@ -26,7 +26,6 @@ import {
   getRandomizerById,
   getStationaryDistribution,
   RANDOMIZER_PRESETS,
-  runParitySimulation,
   runSingleTrajectory,
 } from './logic.js';
 import {

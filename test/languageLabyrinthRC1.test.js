@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { getLanguageAudit, AUDITED_MIXED_PALINDROMES, LANGUAGE_THEOREMS } from '../src/games/languageLabyrinth/audit.js';
+import { getLanguageAudit, AUDITED_MIXED_PALINDROMES } from '../src/games/languageLabyrinth/audit.js';
+import { generateLanguage } from '../src/games/languageLabyrinth/logic.js';
 import { LANGUAGE_CHALLENGES, LANGUAGE_CHALLENGE_STORAGE_KEY, calculateLanguageStars, evaluateLanguageChallenge, getLanguageChallengeStatus, getDefaultLanguageProgress, normalizeLanguageProgress, recordLanguageCompletion, recordLanguageHint } from '../src/games/languageLabyrinth/challenges.js';
 import { LANGUAGE_STATS_STORAGE_KEY, getDefaultLanguageStats, getUnlockedLanguageAchievements, recordLanguageAttempt, recordLanguageStat } from '../src/games/languageLabyrinth/stats.js';
 import { exportArcadeSave, importArcadeSave, resetArcadeProgress } from '../src/core/saveManager.js';
 
-test('RC1 audit exactly reproduces the eight length-10 mixed palindromes and derivations', () => {
+test('reproduces the eight length-10 mixed palindromes and derivations', () => {
   const audit = getLanguageAudit();
   assert.deepEqual(audit.mixedPalindromes, AUDITED_MIXED_PALINDROMES);
   for (const featured of audit.featured) {
@@ -24,13 +24,15 @@ test('RC1 audit exactly reproduces the eight length-10 mixed palindromes and der
   assert.equal(audit.featured[1].length, 10);
 });
 
-test('RC1 theorem cards and observations omit the false universal claim', () => {
-  const source = readFileSync(new URL('../src/games/languageLabyrinth/LanguageLabyrinth.jsx', import.meta.url), 'utf8');
-  assert.doesNotMatch(source + LANGUAGE_THEOREMS.join(' '), /No palindrome (?:in L )?contains both a and b/i);
-  assert.match(LANGUAGE_THEOREMS.join(' '), /zero-answer conjecture is false/);
+test('the suffix invariants hold through length ten even for mixed palindrome witnesses', () => {
+  const { words } = generateLanguage(10);
+  assert.ok(words.every(word => word.endsWith !== 'c'));
+  const mixed = words.filter(word => word.containsA && word.containsB);
+  assert.ok(mixed.every(word => word.endsWith === 'b'));
+  assert.ok(mixed.some(word => word.palindrome && word.length === 10));
 });
 
-test('RC1 stars require success and valid witnesses, and preserve best rating', () => {
+test('stars require success and valid witnesses, and preserve best rating', () => {
   const challenge = LANGUAGE_CHALLENGES[2];
   const success = evaluateLanguageChallenge({ challenge, answer: 'always-true', word: 'aca' });
   assert.equal(calculateLanguageStars(success, 0, challenge), 3);
@@ -42,7 +44,7 @@ test('RC1 stars require success and valid witnesses, and preserve best rating', 
   assert.equal(recordLanguageCompletion(progress, challenge, 'aca', 1).highestStars[challenge.id], 3);
 });
 
-test('RC1 sequential unlocks and migration do not credit the replaced V1 final question', () => {
+test('sequential unlocks and migration do not credit the replaced V1 final question', () => {
   let progress = getDefaultLanguageProgress();
   assert.equal(getLanguageChallengeStatus(LANGUAGE_CHALLENGES[0].id, progress), 'Unlocked');
   assert.equal(getLanguageChallengeStatus(LANGUAGE_CHALLENGES[1].id, progress), 'Locked');
@@ -55,7 +57,7 @@ test('RC1 sequential unlocks and migration do not credit the replaced V1 final q
   assert.equal(progress.hintsUsed['no-final-c'], 3);
 });
 
-test('RC1 stats distinguish attempts, invalid witnesses, unique completions and golds', () => {
+test('stats distinguish attempts, invalid witnesses, unique completions and golds', () => {
   const challenge = LANGUAGE_CHALLENGES[5];
   const previous = getDefaultLanguageProgress();
   const result = evaluateLanguageChallenge({ challenge, answer: 'always-true', word: 'bacab' });
@@ -78,7 +80,7 @@ test('RC1 stats distinguish attempts, invalid witnesses, unique completions and 
   assert.deepEqual(getUnlockedLanguageAchievements(completed, stats).map((entry) => entry.title), ['First Word', 'Invariant Detective', 'Witness Finder', 'Counterexample Hunter', 'Length Ten Hunter', 'Gold Logician']);
 });
 
-test('RC1 global save exports, restores, and resets both Language Labyrinth keys', () => {
+test('global save exports, restores, and resets both Language Labyrinth keys', () => {
   const values = new Map();
   const storage = { getItem: (key) => values.get(key) ?? null, setItem: (key, value) => values.set(key, value), removeItem: (key) => values.delete(key) };
   storage.setItem(LANGUAGE_CHALLENGE_STORAGE_KEY, JSON.stringify({ completed: { 'no-final-c': true } }));

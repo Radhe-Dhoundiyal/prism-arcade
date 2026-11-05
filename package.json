@@ -15,7 +15,7 @@
     "smoke": "node scripts/smoke-maker.mjs",
     "smoke:research": "node scripts/smoke-research.mjs",
     "verify:assets": "node scripts/research-assets.mjs",
-    "test:publication": "node --test test/publicSuccessor.test.js"
+    "test:publication": "node --test \"test/public*.test.js\" \"test/research*.test.js\" test/qaReports.test.js"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.0",

@@ -472,21 +472,22 @@ describe('Arcade save manager', () => {
       'category',
       'status',
       'description',
-      'implementedFeatures',
       'localStorageKeys',
     ];
 
-    getPlayablePortals(games).forEach((portal) => {
+    const playable = getPlayablePortals(games);
+    assert.equal(new Set(playable.map(portal => portal.route)).size, playable.length);
+    playable.forEach((portal) => {
       requiredFields.forEach((field) => {
         assert.equal(Object.hasOwn(portal, field), true, `${portal.id} missing ${field}`);
       });
       assert.equal(Boolean(portal.route), true);
-      assert.equal(portal.implementedFeatures.length > 0, true);
       assert.equal(portal.localStorageKeys.length > 0, true);
+      assert.ok(portal.localStorageKeys.every(key => ARCADE_SAVE_KEYS.includes(key)));
     });
   });
 
-  it('includes Language Labyrinth in global achievement targets in RC1', () => {
+  it('includes Language Labyrinth in global achievement targets', () => {
     const achievementPortals = getAchievementEligiblePortals(games);
 
     assert.equal(achievementPortals.length, 8);

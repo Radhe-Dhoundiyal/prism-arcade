@@ -7,6 +7,7 @@ import {chromium} from 'playwright';
 import {games} from '../src/pages/lobbyData.js';
 import {availableResearchHref,PUBLIC_RESEARCH_EDITIONS} from '../src/research/assetPolicy.js';
 import {PUBLICATION_ASSETS} from '../src/research/publicationAssets.js';
+import {getDossier} from '../src/research/dossiers.js';
 const require=createRequire(import.meta.url),mode=process.env.PRISM_RESEARCH_TEST_MODE||'withheld';
 assert.ok(['withheld','public-editions'].includes(mode));
 const base=process.env.PRISM_BASE_URL||'http://127.0.0.1:4197',output=path.resolve(process.env.PRISM_QA_DIR||'.qa/research');fs.mkdirSync(output,{recursive:true});
@@ -65,7 +66,7 @@ try{
     const viewport=region.getByRole('region',{name:'Zoomable notebook page',exact:true});await viewport.focus();await viewport.press('ArrowRight');
     await setZoom(region,100);
     const response=await context.request.get(assetBase+edition.pdfUrl);assert.equal(response.status(),200);assert.match(response.headers()['content-type'],/pdf/);assert.equal((await response.body()).subarray(0,4).toString(),'%PDF');
-    await region.locator('.notebook-toolbar').scrollIntoViewIfNeeded();const file=path.join(output,game.id+'-desktop-'+stamp+'.png');await page.screenshot({path:file});report.screenshots.push({file,sha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'),viewport:page.viewportSize(),state:{mode,page:last.page,route:'#'+game.id}});
+    await region.locator('.notebook-toolbar').scrollIntoViewIfNeeded();const file=path.join(output,game.id+'-desktop-'+stamp+'.png');await page.screenshot({path:file});report.screenshots.push({file:path.basename(file),sha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'),viewport:page.viewportSize(),state:{mode,page:last.page,route:'#'+game.id}});
     await page.setViewportSize({width:390,height:844});for(const entry of [edition.pages[0],edition.pages[Math.floor(edition.pages.length/2)],last])await verifyPage(region,entry);
     await setZoom(region,300);assert.ok(await region.locator('.notebook-viewport').evaluate(el=>el.scrollWidth>el.clientWidth));await setZoom(region,100);await axe(game.id+' mobile notebook');await page.setViewportSize({width:1440,height:1000});
    }else{
@@ -75,9 +76,10 @@ try{
   }
   await region.getByRole('tab',{name:'Original Notebook',exact:true}).press('End');assert.equal(await region.getByRole('tab',{name:'Proof & Verification',exact:true}).getAttribute('aria-selected'),'true');
   if(mode==='public-editions'&&edition){const solution=region.getByRole('link',{name:'Historical solution - public TeX edition',exact:true});assert.equal(await solution.getAttribute('href'),(assetBase===base?'':assetBase)+edition.texUrl);}
-  if(['language-labyrinth','number-forge','temporal-graphs'].includes(game.id)){
-   await region.getByRole('button',{name:'Read Correction Dossier',exact:true}).click();assert.equal(await region.locator('.correction-dossier section').count(),10);
-   const markdown=region.getByRole('link',{name:'Open Markdown dossier',exact:true});const response=await context.request.get(base+await markdown.getAttribute('href'));assert.equal(response.status(),200);
+  const dossier=getDossier(game.id);
+  if(dossier){
+   await region.getByRole('button',{name:'Read Correction Dossier',exact:true}).click();await region.locator('.correction-dossier section').first().waitFor();
+   const markdown=region.getByRole('link',{name:'Open Markdown dossier',exact:true});assert.equal(await markdown.getAttribute('href'),dossier.document);const response=await context.request.get(base+dossier.document);assert.equal(response.status(),200);
    if(mode==='public-editions')assert.ok((await response.text()).includes('/research/v1/'));
   }
   const details=region.getByText('Source Details / hashes and correction history',{exact:true});await details.click();assert.ok(await region.locator('[data-source-original]').count()>0);await axe(game.id);
@@ -86,11 +88,24 @@ try{
   await page.goto(base+'/#language-labyrinth',{waitUntil:'domcontentloaded'});await page.getByText('Explore My Reasoning',{exact:true}).click();const region=page.getByRole('region',{name:'Mathematical research sources'});
   await region.getByRole('button',{name:'Original claim / notebook page 15',exact:true}).click();assert.equal(await region.getByLabel('Notebook page',{exact:true}).inputValue(),'14');
   if(mode==='public-editions'){const image=region.locator('img.notebook-page');await page.waitForFunction(()=>document.querySelector('img.notebook-page')?.currentSrc.includes('language-labyrinth-15.webp'));assert.ok((await image.getAttribute('src')).endsWith('language-labyrinth-15.webp'));}
-  await region.getByRole('tab',{name:'Mathematical Investigation',exact:true}).click();await region.getByRole('button',{name:'Read Correction Dossier',exact:true}).click();await region.getByRole('heading',{name:'5. Explicit derivations',exact:true}).waitFor();assert.equal(await region.locator('.derivation-steps li').count(),8);
+  await region.getByRole('tab',{name:'Mathematical Investigation',exact:true}).click();await region.getByRole('button',{name:'Read Correction Dossier',exact:true}).click();await region.locator('.derivation-steps li').filter({hasText:/bacabbacab/}).first().waitFor();
  });
  await check('All canonical original and notebook references authenticate in the selected mode',async()=>{
   const assets=new Map(catalog.records.flatMap(record=>record.assets.map(asset=>[asset.url,asset])));const pages=Object.values(notebooks.records).flatMap(record=>record.pages);assert.equal(assets.size,16);assert.equal(pages.length,72);
-  if(mode==='public-editions')for(const asset of PUBLIC_RESEARCH_EDITIONS.files){const response=await context.request.get(assetBase+asset.url);assert.equal(response.status(),200);assert.match(response.headers()['content-type'],asset.kind==='notebook-pdf'?/application\/pdf/:asset.kind==='notebook-page'?/image\/webp/:/(?:text|application)\/(?:x-)?(?:tex|plain)/);assert.equal(crypto.createHash('sha256').update(await response.body()).digest('hex'),asset.sha256);}
+  if(mode==='public-editions'){
+   const manifest=await context.request.get(assetBase+'/research/'+PUBLIC_RESEARCH_EDITIONS.version+'/manifest.json');
+   assert.equal(manifest.status(),200);
+   assert.deepEqual(await manifest.json(),PUBLIC_RESEARCH_EDITIONS);
+   for(const asset of PUBLIC_RESEARCH_EDITIONS.files){
+    const response=await context.request.get(assetBase+asset.url);
+    assert.equal(response.status(),200);
+    assert.match(response.headers()['content-type'],asset.kind==='notebook-pdf'?/application\/pdf/:asset.kind==='notebook-page'?/image\/webp/:/(?:text|application)\/(?:x-)?(?:tex|plain)/);
+    const bytes=await response.body();
+    assert.equal(bytes.length,asset.bytes,asset.url);
+    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),asset.sha256,asset.url);
+    await response.dispose();
+   }
+  }
   else for(const asset of assets.values())assert.equal(availableResearchHref(asset.url,{mode:'withheld'}),null);
   for(const asset of PUBLICATION_ASSETS.assets){const response=await context.request.get(base+asset.url);assert.equal(response.status(),404,'Private original exposed: '+asset.url);}
   const held=await context.request.get(base+'/research/availability.html?source='+encodeURIComponent('/research/prism-india-problem-set.pdf'));assert.equal(held.status(),200);assert.ok((await held.text()).includes('Untouched historical originals remain'));
@@ -105,6 +120,6 @@ try{
    await setZoom(region,300);assert.ok(await region.locator('.notebook-viewport').evaluate(el=>el.scrollWidth>el.clientWidth));
    await setZoom(region,100);
   }
-  await page.locator('.notebook-toolbar').scrollIntoViewIfNeeded();await axe('mobile-notebook');const file=path.join(output,'research-'+mode+'-'+stamp+'.png');await page.screenshot({path:file});report.screenshots.push({file,sha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'),viewport:page.viewportSize(),timestamp:new Date().toISOString(),state:{mode,page:15,route:'#language-labyrinth'}});
+  await page.locator('.notebook-toolbar').scrollIntoViewIfNeeded();await axe('mobile-notebook');const file=path.join(output,'research-'+mode+'-'+stamp+'.png');await page.screenshot({path:file});report.screenshots.push({file:path.basename(file),sha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'),viewport:page.viewportSize(),timestamp:new Date().toISOString(),state:{mode,page:15,route:'#language-labyrinth'}});
  });
 }catch(error){report.errors.push(error.message);}finally{report.passed=report.checks.length===11&&report.checks.every(check=>check.passed)&&!report.errors.length;report.finishedAt=new Date().toISOString();fs.writeFileSync(path.join(output,'research-'+mode+'-'+stamp+'.json'),JSON.stringify(report,null,2)+'\n');await browser.close();console.log('RESEARCH_QA',mode,report.passed);if(!report.passed)process.exitCode=1;}

@@ -235,10 +235,6 @@ export function getLanguageHint(challenge, level) {
   return challenge.hints[Math.max(0, Math.min(challenge.hints.length - 1, level - 1))];
 }
 
-export function findGeneratedWord(predicate, maxLength = LANGUAGE_CHALLENGE_SEARCH_CAP) {
-  return generateLanguage(maxLength).words.find(predicate) || null;
-}
-
 function validateWitness(challenge, word, maxLength) {
   const cleanWord = word.trim();
 

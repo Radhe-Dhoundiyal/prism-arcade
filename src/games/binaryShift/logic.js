@@ -52,13 +52,6 @@ export function shiftLastBitToFront(binaryString) {
   return `${binaryString.at(-1)}${binaryString.slice(0, -1)}`;
 }
 
-export function getShiftedValue(value, n) {
-  if (parseUnsignedInteger(value) === null) throw new RangeError('Expected a nonnegative integer of at most 512 bits.');
-  const binary = getNBitBinary(value, n);
-
-  return BigInt(`0b${shiftLastBitToFront(binary)}`);
-}
-
 export function getDivisibilityRow(n) {
   const cleanN = normalizeN(n);
   const twoToNMinusOne = getPowerOfTwo(cleanN) - 1n;

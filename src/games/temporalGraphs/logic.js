@@ -313,32 +313,6 @@ export function analyzeCandidateTrigger(graph, candidateTrigger) {
   };
 }
 
-export function getTemporalLayout(graphOrNodes) {
-  const rawNodes = Array.isArray(graphOrNodes) ? graphOrNodes : graphOrNodes.nodes;
-  const nodes = rawNodes.map((node) => (typeof node === 'string' ? { id: node } : node));
-  const centerX = 50;
-  const centerY = 50;
-  const radius = nodes.length <= 4 ? 30 : 36;
-
-  return new Map(
-    nodes.map((node, index) => {
-      if (Number.isFinite(node.x) && Number.isFinite(node.y)) {
-        return [node.id, { x: node.x, y: node.y }];
-      }
-
-      const angle = (Math.PI * 2 * index) / Math.max(nodes.length, 1) - Math.PI / 2;
-
-      return [
-        node.id,
-        {
-          x: centerX + Math.cos(angle) * radius,
-          y: centerY + Math.sin(angle) * radius,
-        },
-      ];
-    }),
-  );
-}
-
 export function getTemporalEdgeKey(edge) {
   return getEdgeKey(edge);
 }
