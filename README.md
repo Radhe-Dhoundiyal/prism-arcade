@@ -52,7 +52,7 @@ The [Research Journey](https://prism-arcade-live.vercel.app/) lets you compare e
 - **Language Labyrinth:** [Notebook page 15](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/pages/language-labyrinth-15.webp) preserves my mistaken zero-answer argument. The [word generator](src/games/languageLabyrinth/logic.js) makes counterexamples testable; the [correction](docs/corrections/language-labyrinth.md) explains the later AI-assisted verification that exactly eight mixed palindromes have length 10.
 - **Temporal Graphs:** [Notebook page 7](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/pages/temporal-graphs-7.webp) records the ladder investigation. The [edge-trigger analysis](src/games/temporalGraphs/logic.js) distinguishes owners who win for the first time from those who already won; the [later correction](docs/corrections/temporal-graphs.md) explains the reverse-forest argument.
 
-These are links between mathematical ideas, later implementation, and checks—not claims that I personally typed every source file. The original notes remain separate from subsequent corrections. Earlier software development took place in a private working repository in June 2026; the public repository is a later curated release.
+The original notes remain separate from subsequent corrections. Earlier software development took place in a private working repository in June 2026; this public repository is a later curated release.
 
 ## Implementation
 
