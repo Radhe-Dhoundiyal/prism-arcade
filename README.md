@@ -6,7 +6,7 @@ PRISM Arcade turns eight PRISM India problems into interactive mathematical expe
 
 ## From Notebook to Game
 
-I began by investigating the PRISM India problems on paper, developing solutions, conjectures and proof attempts. Those investigations shaped the direction and mathematical purpose of the interactive games and experiments. The software gave me a way to explore strategies, test examples and examine counterexamples.
+I started by working through the PRISM India problems on paper. Some ideas led to proofs; others led to conjectures, mistakes and counterexamples. The games gave me a way to test those ideas more systematically.
 
 I used AI tools, including Codex, for software implementation, debugging, later mathematical verification and editorial preparation. The notebooks retain my historical claims, including mistakes; later verification and corrections are documented separately. See [provenance](docs/provenance.md) for the attribution and source history.
 
@@ -22,8 +22,6 @@ In Language Labyrinth, my original conclusion was incorrect. Later computational
 | Blackboard: greedy versus optimal | Loop Strings: permutations and cycles |
 | [![Legal Blackboard replay with exact and greedy comparisons](docs/media/blackboard.png)](docs/media/blackboard.png) | [![Loop Strings matching-label diagram after a three-endpoint rotation](docs/media/loops.png)](docs/media/loops.png) |
 
-These are actual application captures, not reconstructed gameplay.
-
 ## The Portals
 
 | Problem | Environment | Mathematical focus |
@@ -37,17 +35,17 @@ These are actual application captures, not reconstructed gameplay.
 | 7 | Loop Strings | Endpoint rotations, permutation parity and cycles |
 | 8 | Blackboard Moves | Legal replay, greedy strategies and exact search |
 
-All eight are playable. Portal coverage is 100%; personal challenge completion is tracked separately. Experimental modes and bounded or heuristic results remain labeled.
+All eight portals are playable. Some experiments use bounded searches or heuristic methods, and challenge progress is tracked separately.
 
 ## Exploration and Research
 
-Seven public notebook editions preserve 72 source-page positions. Statement omissions and new editorial context are labeled; the authenticated originals remain private. Seven solution editions retain the historical mathematics, including mistakes. Problem 8 has no supplied notebook or completed historical manuscript.
+The Research Journey covers seven notebooks (72 source-page positions) and seven solutions. Some public pages omit problem-statement text or use clearly labeled replacement material. My original reasoning, including mistakes, is retained where available; unedited originals remain private. I have no notebook or completed historical solution for Problem 8.
 
 The [live Research Journey](https://prism-arcade-live.vercel.app/) loads the public editions on demand. The research files are hosted separately and stay outside Git; local builds without the package show availability notices. See [research delivery](docs/research-availability.md).
 
 ### Follow a problem from notebook to game
 
-The [Research Journey](https://prism-arcade-live.vercel.app/) lets you compare edited public editions of my earlier mathematical notes with the experiments they informed. A few examples are easiest to trace directly:
+Here are four examples connecting my earlier notes to the games and later corrections:
 
 - **Grid Dominion:** My [earlier notebook](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-4-notebook.pdf) and [solution](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-4-solution.tex) explore 180° rotation, opposite-color pairings, and edge balance. Compare the [edge-counting rules](src/games/gridDominion/logic.js), [playable game](https://prism-arcade-live.vercel.app/#grid-dominion), and [independent bounded search checks](test/gridDominionOracle.test.js). The Hard AI search is a later software feature.
 - **Number Forge:** The [original solution](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-3-solution.tex) works through residues modulo 3 for (9, 15, 25) and (9, 21, 49). The [reachability engine](src/games/numberForge/logic.js) and [tests](test/numberForge.test.js) explore these ideas. A [later correction](docs/corrections/number-forge.md) concerns a generalized software reduction, **not** an error in the original named-case work.
@@ -56,7 +54,7 @@ The [Research Journey](https://prism-arcade-live.vercel.app/) lets you compare e
 
 ## Implementation
 
-React and Vite provide the interface. Pure JavaScript mathematical engines, bounded worker searches and independent regression oracles support the experiments. Local profiles, achievements and versioned save exports require no account service, analytics backend or leaderboard.
+The app uses React and Vite, with JavaScript logic for each game. Larger searches run in workers, and independent mathematical checks test the results. Progress and saves stay in the browser; there is no account system or leaderboard.
 
 ## Run Locally
 
@@ -73,16 +71,14 @@ Open the URL Vite prints. On Windows, use `npm.cmd` if PowerShell blocks `npm.ps
 
 ```sh
 npm test
-npm run test:math
-npm run test:save
 npm run verify:content
 npm run build
 npm run preview -- --host 127.0.0.1 --port 4175 --strictPort
 ```
 
-With the production preview running, use `npm run smoke` and `npm run smoke:research`. [Verification](docs/verification.md) covers browser setup, research-edition checks and reproducibility.
+`npm test` includes the mathematical and save tests. To run those subsets alone, use `npm run test:math` or `npm run test:save`. With the production preview running, use `npm run smoke` and `npm run smoke:research`. See [verification](docs/verification.md) for details.
 
-See [architecture](docs/architecture.md), [mathematical scope](docs/mathematics.md), [provenance](docs/provenance.md) and [limitations](docs/limitations.md). A finite search is not an unbounded proof; a heuristic is not perfect play; a written explanation is not automatically machine-verified.
+See [architecture](docs/architecture.md), [mathematical scope](docs/mathematics.md), [provenance](docs/provenance.md) and [limitations](docs/limitations.md). Finite searches are not proofs for all cases, and heuristic moves are not always optimal.
 
 ## Credits and Rights
 

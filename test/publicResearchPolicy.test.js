@@ -9,7 +9,7 @@ import {games,getLobbyProgressPercent} from '../src/pages/lobbyData.js';
 import {LANGUAGE_CHALLENGES,evaluateLanguageChallenge} from '../src/games/languageLabyrinth/challenges.js';
 import {availableResearchHref,researchLinkHref} from '../src/research/assetPolicy.js';
 
-it('verifies public links and assets without bundling historical originals',()=>{
+it('verifies public research links and assets without bundling historical originals',()=>{
   const result=verifyContent();
   assert.ok(result.localLinks>0);
   assert.equal(result.bundledHistoricalAssets,0);
