@@ -271,7 +271,7 @@ try {
     await page.getByTestId('language-challenge-result').scrollIntoViewIfNeeded();await screenshot('language-witness','A confirming length-10 witness, without notebook or paper reproduction.');
   });
   await check('Research jump, original notebook navigation and full correction dossier remain usable',async()=>{
-    await page.getByRole('button',{name:'Follow the counterexample / Correction Dossier',exact:false}).click();
+    await page.getByRole('button',{name:'See the counterexample and correction',exact:false}).click();
     const region=page.getByRole('region',{name:'Mathematical research sources'});await region.getByRole('heading',{name:'From experiment to evidence',exact:true}).waitFor();
     await page.waitForFunction(()=>document.activeElement?.tagName==='H2');
     assert.equal(await page.evaluate(()=>document.activeElement?.tagName),'H2');
@@ -280,7 +280,7 @@ try {
     await region.getByLabel('Notebook page',{exact:true}).selectOption('14');
     const originalLink=region.getByRole('link',{name:/Open public-edition PDF/});assert.equal(new URL(await originalLink.getAttribute('href'),base).searchParams.get('source'),'/research/problem-5-rough.pdf#page=15');
     await region.getByRole('tab',{name:'Original Notebook',exact:true}).press('End');
-    await region.getByRole('button',{name:'Read Correction Dossier',exact:true}).click();
+    await region.getByRole('button',{name:'Read correction notes',exact:true}).click();
     await region.getByRole('heading',{name:'A counterexample changes the answer',exact:true}).waitFor();
     assert.equal(await region.locator('img').count(),0);await screenshot('language-proof','Software proof notes remain readable without original source assets.');await accessibility('code-first-proof');
   });

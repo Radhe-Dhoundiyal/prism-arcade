@@ -78,8 +78,8 @@ try{
   if(mode==='public-editions'&&edition){const solution=region.getByRole('link',{name:'Historical solution - public TeX edition',exact:true});assert.equal(await solution.getAttribute('href'),(assetBase===base?'':assetBase)+edition.texUrl);}
   const dossier=getDossier(game.id);
   if(dossier){
-   await region.getByRole('button',{name:'Read Correction Dossier',exact:true}).click();await region.locator('.correction-dossier section').first().waitFor();
-   const markdown=region.getByRole('link',{name:'Open Markdown dossier',exact:true});assert.equal(await markdown.getAttribute('href'),dossier.document);const response=await context.request.get(base+dossier.document);assert.equal(response.status(),200);
+   await region.getByRole('button',{name:'Read correction notes',exact:true}).click();await region.locator('.correction-dossier section').first().waitFor();
+   const markdown=region.getByRole('link',{name:'Read the full notes',exact:true});assert.equal(await markdown.getAttribute('href'),dossier.document);const response=await context.request.get(base+dossier.document);assert.equal(response.status(),200);
    if(mode==='public-editions')assert.ok((await response.text()).includes('/research/v1/'));
   }
   const details=region.getByText('Source Details / hashes and correction history',{exact:true});await details.click();assert.ok(await region.locator('[data-source-original]').count()>0);await axe(game.id);
@@ -88,7 +88,7 @@ try{
   await page.goto(base+'/#language-labyrinth',{waitUntil:'domcontentloaded'});await page.getByText('Explore My Reasoning',{exact:true}).click();const region=page.getByRole('region',{name:'Mathematical research sources'});
   await region.getByRole('button',{name:'Original claim / notebook page 15',exact:true}).click();assert.equal(await region.getByLabel('Notebook page',{exact:true}).inputValue(),'14');
   if(mode==='public-editions'){const image=region.locator('img.notebook-page');await page.waitForFunction(()=>document.querySelector('img.notebook-page')?.currentSrc.includes('language-labyrinth-15.webp'));assert.ok((await image.getAttribute('src')).endsWith('language-labyrinth-15.webp'));}
-  await region.getByRole('tab',{name:'Mathematical Investigation',exact:true}).click();await region.getByRole('button',{name:'Read Correction Dossier',exact:true}).click();await region.locator('.derivation-steps li').filter({hasText:/bacabbacab/}).first().waitFor();
+  await region.getByRole('tab',{name:'Mathematical Investigation',exact:true}).click();await region.getByRole('button',{name:'Read correction notes',exact:true}).click();await region.locator('.derivation-steps li').filter({hasText:/bacabbacab/}).first().waitFor();
  });
  await check('All canonical original and notebook references authenticate in the selected mode',async()=>{
   const assets=new Map(catalog.records.flatMap(record=>record.assets.map(asset=>[asset.url,asset])));const pages=Object.values(notebooks.records).flatMap(record=>record.pages);assert.equal(assets.size,16);assert.equal(pages.length,72);

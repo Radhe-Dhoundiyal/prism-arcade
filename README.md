@@ -12,7 +12,7 @@ I used AI tools, including Codex, for software implementation, debugging, later 
 
 Earlier software development took place in a private working repository in June 2026, before this public release.
 
-In Language Labyrinth, my original conclusion was incorrect. Later computational investigation and verification established that exactly eight generated palindromes of length 10 contain both `a` and `b`. This is a finite counting result, not a classification of all generated palindromes. The [correction dossier](docs/corrections/language-labyrinth.md) explains the counterexamples and the verification.
+In Language Labyrinth, I originally answered 0. A later counterexample showed why that was wrong, and two different checks found eight length-10 palindromes containing both `a` and `b`. That does not tell us what happens at every length. I explain the mistake and the count in the [correction notes](docs/corrections/language-labyrinth.md).
 
 ## Preview
 
@@ -39,9 +39,9 @@ All eight portals are playable. Some experiments use bounded searches or heurist
 
 ## Exploration and Research
 
-The Research Journey covers seven notebooks (72 source-page positions) and seven solutions. Some public pages omit problem-statement text or use clearly labeled replacement material. My original reasoning, including mistakes, is retained where available; unedited originals remain private. I have no notebook or completed historical solution for Problem 8.
+The Research Journey includes seven notebooks (72 page positions) and seven solutions. You can see my early attempts, including mistakes. Some public pages leave out the original problem statement or use a clearly labeled replacement; unedited originals are private. I have no earlier notebook or completed solution for Problem 8.
 
-The [live Research Journey](https://prism-arcade-live.vercel.app/) loads the public editions on demand. The research files are hosted separately and stay outside Git; local builds without the package show availability notices. See [research delivery](docs/research-availability.md).
+The [live Research Journey](https://prism-arcade-live.vercel.app/) loads these pages when needed. The research files are hosted separately from the code, so local builds without them show availability notices. See [research delivery](docs/research-availability.md).
 
 ### Follow a problem from notebook to game
 

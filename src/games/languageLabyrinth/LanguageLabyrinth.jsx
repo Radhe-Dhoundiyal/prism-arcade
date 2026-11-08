@@ -556,7 +556,7 @@ export default function LanguageLabyrinth({ onBack }) {
       )}
       <section className="language-audit" data-testid="language-counterexample-gallery">
         <h2>Counterexample Gallery</h2>
-        <ResearchLink portalId="language-labyrinth">Follow the counterexample / Correction Dossier</ResearchLink>
+        <ResearchLink portalId="language-labyrinth">See the counterexample and correction</ResearchLink>
         <p>bacab is both generated and a mixed palindrome. It is a witness for existence and a counterexample to the original claim that no such word exists.</p>
         <div className="language-featured">
           {audit.featured.map((entry) => <article key={entry.word}>

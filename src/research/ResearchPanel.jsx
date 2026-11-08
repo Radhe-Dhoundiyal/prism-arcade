@@ -19,12 +19,12 @@ export function ResearchLink({ portalId, children = 'Investigate the mathematics
 }
 
 function Dossier({ dossier }) {
-  return <article className="correction-dossier" aria-label="Correction Dossier">
+  return <article className="correction-dossier" aria-label="Correction notes">
     <p className="research-kicker">{dossier.subtitle}</p><h3>{dossier.title}</h3>
     {dossier.portalId === 'temporal-graphs' && <MathEquation id="temporal" />}
-    <p>This correction is separate from the unchanged original.</p>
-    <a href={dossier.document} target="_blank" rel="noreferrer">Open Markdown dossier</a>
-    <details><summary>Precise source references</summary><ul>{dossier.sources.map((source) =>
+    <p>This correction came later. The original notes are left as they were.</p>
+    <a href={dossier.document} target="_blank" rel="noreferrer">Read the full notes</a>
+    <details><summary>Original sources</summary><ul>{dossier.sources.map((source) =>
       <li key={`${source.url}-${source.page ?? 'tex'}`}><ResearchAssetLink href={sourceHref(source)} target="_blank" rel="noreferrer">{source.label}</ResearchAssetLink></li>)}</ul></details>
     {dossier.sections.map((section) => <section key={section.title}>
       <h4>{section.title}</h4>{section.equation && <MathEquation id={section.equation} />}{section.paragraphs?.map((text) => <p key={text}>{text}</p>)}
@@ -109,7 +109,7 @@ export default function ResearchPanel({ portalId }) {
           <h2 ref={headingRef} tabIndex={-1}>From experiment to evidence</h2><p>{record.concept}</p></div>
         <span className="evidence-label">Practice is not proof</span>
       </header>
-      <p className="research-review-notice">Public research edition v1. Edited pages are labeled; historical conclusions and current corrections remain separate.</p>
+      <p className="research-review-notice">These are edited public versions of my notes. Original conclusions, including mistakes, are kept; later corrections appear separately.</p>
       <nav className="journey-stages" aria-label="Research journey stages">
         {JOURNEY_STAGES.map(([label, target], index) => <button key={label} aria-pressed={stage === index}
           onClick={() => selectView(target, index)}><span>{String(index + 1).padStart(2, '0')}</span>{label}</button>)}
@@ -130,7 +130,7 @@ export default function ResearchPanel({ portalId }) {
             <h3>What to track</h3><p>{narrative.quantities}</p>
             <h3>The idea and its limits</h3><p>{narrative.insight}</p><p>{narrative.correction}</p>
             {dossier?.sources.filter((source) => source.claimScan).map((source) => <p key={source.page}><button className="research-jump" onClick={() => setNotebookPage(source.page)}>Original claim / notebook page {source.page}</button></p>)}
-            {dossier && <button className="research-jump" onClick={() => { selectView('investigation'); setShowDossier(true); }}>Read Correction Dossier &#8594;</button>}
+            {dossier && <button className="research-jump" onClick={() => { selectView('investigation'); setShowDossier(true); }}>Read correction notes &#8594;</button>}
             <p className="source-caption">The notebook records the original attempt. Current conclusions are explained separately.</p>
           </aside>
         </div>}
@@ -139,14 +139,14 @@ export default function ResearchPanel({ portalId }) {
             <h3>Mathematical insight</h3><p>{narrative.insight}</p>
             <h3>Conjectures and corrections</h3><p>{narrative.correction}</p>
             <h3>What the engine checks</h3><p>{narrative.verification}</p>
-            {dossier && <button className="research-jump" aria-expanded={showDossier} onClick={() => setShowDossier(!showDossier)}>{showDossier ? 'Close' : 'Read'} Correction Dossier</button>}
+            {dossier && <button className="research-jump" aria-expanded={showDossier} onClick={() => setShowDossier(!showDossier)}>{showDossier ? 'Close' : 'Read'} correction notes</button>}
           </section>{showDossier && dossier && <Dossier dossier={dossier} />}
         </>}
         {view === 'proof' && <>
           <section className="verification-view"><h3>Proof &amp; Verification</h3><p>{narrative.verification}</p>
-            {portalId === 'language-labyrinth' && <p>Your written explanations are recorded, not machine-verified proofs. The length-10 count is exhaustive; it is not a classification of palindromes of every length.</p>}
-            {dossier && <><p>Read the corrected argument, its assumptions and coverage separately from the historical source.</p>
-              <button className="research-jump" aria-expanded={showDossier} onClick={() => setShowDossier(!showDossier)}>{showDossier ? 'Close' : 'Read'} Correction Dossier</button></>}
+            {portalId === 'language-labyrinth' && <p>The written explanations are not machine-verified proofs. The length-10 count is exhaustive, but it does not classify palindromes of every length.</p>}
+            {dossier && <><p>The later argument and its checks are separate from what I originally wrote.</p>
+              <button className="research-jump" aria-expanded={showDossier} onClick={() => setShowDossier(!showDossier)}>{showDossier ? 'Close' : 'Read'} correction notes</button></>}
             <h3>{portalId === 'blackboard-moves' ? 'Historical problem extract / not a solution' : 'Historical solution / public TeX edition'}</h3><p>Untouched original manuscripts remain private. The public TeX edition removes statement material and adds a labeled editorial introduction; historical mathematical conclusions are not corrected in place.</p>
             {record.assets.filter((asset) => asset.kind === 'tex' || asset.kind === 'problem-extract').map((asset) => <p key={asset.url}><ResearchAssetLink href={asset.url} download>{asset.kind === 'problem-extract' ? 'Problem 8 statement extract (not a solution; held)' : 'Historical solution - public TeX edition'}</ResearchAssetLink></p>)}
             {portalId === 'blackboard-moves' && <p>The legal [4,5,5] maximum witness has 19 moves; replay each indexed transition in the lab. Greedy gives 9. The exhaustive budget and admission caps remain in force.</p>}

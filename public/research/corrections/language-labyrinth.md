@@ -2,9 +2,9 @@
 
 Problem 5 / Mathematical correction
 
-Mathematical correction dossier. Historical originals remain private; this document presents the later correction, not an edited historical manuscript.
+This note explains a later correction to my original answer. The notebook and TeX still show what I wrote at the time; private originals are not posted here.
 
-## Source References
+## Original sources
 
 - [Official Problem 5, page 3](../availability.html?source=%2Fresearch%2Fprism-india-problem-set.pdf%23page%3D3) - Original reference: `/research/prism-india-problem-set.pdf#page=3`.
 - [Original TeX: Initial Exploration; Observations 1 and 2; Conclusion](../availability.html?source=%2Fresearch%2Fproblem-5-original.tex) - Original reference: `/research/problem-5-original.tex`. Section: Initial Exploration; Observation 1 (Suffix Invariant); Observation 2 (Palindromes with both letters); Conclusion.
@@ -12,37 +12,21 @@ Mathematical correction dossier. Historical originals remain private; this docum
 - [Original rough notebook, page 15: zero-answer argument](../availability.html?source=%2Fresearch%2Fproblem-5-rough.pdf%23page%3D15) - Original reference: `/research/problem-5-rough.pdf#page=15`.
 - [Original rough notebook, page 16: observation summary](../availability.html?source=%2Fresearch%2Fproblem-5-rough.pdf%23page%3D16) - Original reference: `/research/problem-5-rough.pdf#page=16`.
 
-## 1. Question and context
+## The question
 
-The official language starts with a and b. Rule (b): w becomes cw. Rule (c): a split wv with nonempty w becomes vwv; v may be empty. Rule (d): aw becomes wb. Count palindromes of length exactly 10 containing both a and b.
+Start with a and b. Rule (b) puts c in front of a word. Rule (c) changes a split w|v into vwv, where w is nonempty and v can be empty. Rule (d) changes aw into wb. How many generated palindromes of length 10 contain both a and b?
 
+## What my notes said
 
+My Problem 5 TeX concluded that the answer was 0: I thought no palindrome could contain both a and b. It also observed that no generated word ends in c; that part was correct. The TeX explores ca -> aca and final letters. The zero-answer argument is on notebook page 15, with a summary on page 16. These are the written sources, not a claim about the order in which the ideas occurred.
 
+## Where the argument breaks
 
-## 2. Original claim and source
+A palindrome can start and end in b, so reaching a final b is not a contradiction. A finished word need not allow another use of rule (d); it only needs a legal path from an axiom. In particular, rule (c) can turn aca|b into b|aca|b. My original argument did not rule that out. When v is empty, rule (c) simply leaves the word unchanged.
 
-Observation 2 of the preserved Problem 5 TeX claims that no generated palindrome contains both a and b; its Conclusion gives 0. Observation 1, that no word ends in c, is a separate valid claim. Source headings above locate these claims without inventing pagination for an uncompiled TeX file.
+## Building the counterexample
 
-
-
-
-## 3. Evidence-supported development
-
-The TeX starts with examples formed by prepending c and the transformation ca to aca. Its Key Turning Insight section switches to tracking the final letter. Notebook page 15 contains the beginning-with-b argument and answer 0; page 16 summarizes the three claimed observations. These references locate the written argument rather than establish when it was discovered.
-
-
-
-
-## 4. The unjustified inference
-
-Ending in b and hence beginning in b is compatible with being a mixed palindrome. Inability to apply rule (d) to that finished word is not a contradiction: membership requires a derivation, not future applicability of (d). Rule (c) can wrap a mixed predecessor with its suffix b: aca|b becomes b|aca|b. The argument never establishes that such wrapping is impossible. Also, when v is empty, rule (c) is the identity; this case needs no final letter of v.
-
-
-
-
-## 5. Explicit derivations
-
-Each arrow is one official rule application. For rule (c), the split w|v is shown explicitly; w is nonempty.
+Every arrow below is one allowed rule. For rule (c), I have marked the split w|v, with w nonempty.
 
 1. `a: axiom (a).`
 2. `a -> ca: (b), prepend c.`
@@ -53,22 +37,17 @@ Each arrow is one official rule application. For rule (c), the split w|v is show
 7. `bacab -> acabbacab: (c), w=b, v=acab; output acab+b+acab.`
 8. `acabbacab -> bacabbacab: (c), w=acabbaca, v=b; output b+acabbaca+b.`
 
+## What this shows
 
-## 6. Corrected statements
+Both `bacab` (length 5) and `bacabbacab` (length 10) are generated palindromes containing a and b. So the original zero claim is false. The observation about never ending in c is still true, though. The full length-10 count needs a separate check.
 
-Mixed palindromes do exist: bacab has length 5; bacabbacab has length 10. Both read identically backwards and contain a and b. No generated word ends in c remains a valid unbounded invariant. The length-10 answer is 8, not 0.
+## Checking the count
 
+The last-letter observation follows by induction. The starting words a and b do not end in c. Rule (b) keeps the last letter; rule (c) either keeps the word (empty v) or ends in the same last letter as v; rule (d) ends in b. None can produce a final c.
 
+For the length-10 count, start with {a,b} and repeatedly apply rules (b), (c) for every split with nonempty w, and (d), keeping words of length at most 10. Rule (b) adds a letter, rule (c) adds |v| letters, and rule (d) keeps the length. Nothing shortens a word, so this search cannot miss a length-10 word by skipping a longer intermediate step.
 
-
-## 7. Proof and bounded exhaustive evidence
-
-Suffix proof by induction on derivations: a,b end in a or b; B preserves the last letter; for nonempty v, C ends in the last letter of v, the suffix of its predecessor; for empty v, C changes nothing; D appends b. Thus no generated word ends in c.
-
-To exhaust length <=10, start with {a,b}, apply B, every nonempty-prefix split for C, and D until no new word of length <=10 is added. No rule shortens a word: B adds 1, C adds |v|, D preserves length. Thus a derivation of a word of length <=10 never needs a longer intermediate word, and finite closure is complete for this cap.
-
-An independent inverse-rule check examines all 88,572 nonempty ternary words of lengths 1..10. Reverse B removes leading c; reverse D maps u+b to a+u; reverse C removes a nonempty leading v when the remaining wv ends in the same v and w is nonempty. Handle same-length D predecessors with visited states/fixed-point reachability; ignore empty-v identity. It agrees with all 3,866 generated words. The eight mixed length-10 palindromes are listed below. These are bounded exhaustive facts, not an unbounded classification of all palindromes.
-
+A second check worked backwards through all 88,572 nonempty words over a,b,c of length 1-10. Reverse (b) removes a first c; reverse (d) changes u+b to a+u; reverse (c) removes a nonempty leading v when the remaining wv ends with that same v and w is nonempty. The check revisits same-length (d) predecessors until stable and ignores the empty-v identity. It found exactly the same 3,866 generated words. Of these, the following eight are mixed palindromes of length 10:
 
 - `bacaaaacab`
 - `bacabbacab`
@@ -79,23 +58,6 @@ An independent inverse-rule check examines all 88,572 nonempty ternary words of 
 - `bbaccccabb`
 - `bbbaccabbb`
 
-## 8. Consequence for the answer
+## Answer and limits
 
-Under the official rules as supplied, exactly 8 length-10 mixed palindromes exist. The counterexamples refute the historical zero answer without changing any rule. They do not refute the no-final-c invariant.
-
-
-
-
-## 9. Reasoning lesson
-
-The final-letter invariant is true, but it does not rule out a palindrome starting and ending in b. One construction refutes the original claim. Exhaustive enumeration answers the separate length-10 counting question.
-
-
-
-
-## 10. Correction history
-
-The language engine and challenges were corrected after mixed-palindrome witnesses disproved the original zero claim. Independent forward generation and inverse-rule membership checks agreed on the eight length-10 mixed palindromes. The historical claim remains in the original work.
-
-
-
+The corrected answer is 8, not 0. The counterexample disproves my earlier conjecture, and the two finite checks establish the length-10 count. They do not classify palindromes of every length. The game and challenges were updated after this correction; the original notes still show the mistake.

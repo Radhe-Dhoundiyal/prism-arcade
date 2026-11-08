@@ -1,8 +1,8 @@
 # Research Editions and Assets
 
-The source repository and research payload are separate. The `v1` package contains seven labeled public notebook PDFs, 72 page slots and seven public TeX solutions. It excludes every private original, the official problem-set PDF and the Problem 8 statement extract. The missing Problem 8 notebook remains explicit.
+The code and research files are distributed separately. Public edition `v1` includes seven labeled notebook PDFs, 72 page slots and seven TeX solutions. It does not include private originals, the official problem-set PDF or the Problem 8 statement extract. There is no earlier notebook for Problem 8.
 
-`src/research/public-editions.json` pins every public file's length, SHA-256, original source identity and edit summary. `catalog.json`, `notebook-pages.json` and `publicationAssets.js` retain historical identities, not public download permissions. A historical source reference resolves only to its public derivative; unknown or held material opens an availability notice. No private-original mode exists in this public-edition application.
+`src/research/public-editions.json` records each public file's size, SHA-256, original source and edits. `catalog.json`, `notebook-pages.json` and `publicationAssets.js` still identify the historical sources; they do not grant access to private files. Links to an original open its public edition if available, or an availability notice otherwise. The app never serves private originals.
 
 The separately preserved private archive contains complete originals. Public editions are not exact replicas: statement passages are omitted, editorial settings are new, and unnecessary original PDF metadata is removed. Historical mathematics is retained, including mistakes; corrections stay separate. Four source-page slots contain editorial replacements, not reproduced handwriting. See [provenance](provenance.md).
 
