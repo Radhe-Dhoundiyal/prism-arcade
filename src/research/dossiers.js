@@ -7,10 +7,10 @@ export const DOSSIERS = [
     document: '/research/corrections/language-labyrinth.md',
     sources: [
       { label: 'Official Problem 5, page 3', url: '/research/prism-india-problem-set.pdf', page: 3 },
-      { label: 'Original TeX: Initial Exploration; Observations 1 and 2; Conclusion', url: '/research/problem-5-original.tex', section: 'Initial Exploration; Observation 1 (Suffix Invariant); Observation 2 (Palindromes with both letters); Conclusion' },
-      { label: 'Original rough notebook, page 1 onward (not transcribed)', url: '/research/problem-5-rough.pdf', page: 1 },
-      { label: 'Original rough notebook, page 15: zero-answer argument', url: '/research/problem-5-rough.pdf', page: 15, claimScan: true },
-      { label: 'Original rough notebook, page 16: observation summary', url: '/research/problem-5-rough.pdf', page: 16, claimScan: true },
+      { label: 'Problem 5 solution (public TeX edition)', url: '/research/problem-5-original.tex', section: 'Initial Exploration; Observation 1 (Suffix Invariant); Observation 2 (Palindromes with both letters); Conclusion' },
+      { label: 'Notebook (public PDF edition), from page 1', url: '/research/problem-5-rough.pdf', page: 1 },
+      { label: 'Notebook page 15: zero-answer argument', url: '/research/problem-5-rough.pdf', page: 15, claimScan: true },
+      { label: 'Notebook page 16: observation summary', url: '/research/problem-5-rough.pdf', page: 16, claimScan: true },
     ],
     sections: [
       { title: '1. The question', paragraphs: ['Start with a and b. Rule (b) puts c in front of a word. Rule (c) changes a split w|v into vwv, where w is nonempty and v can be empty. Rule (d) changes aw into wb. How many generated palindromes of length 10 contain both a and b?'] },
@@ -41,10 +41,10 @@ export const DOSSIERS = [
     document: '/research/corrections/temporal-graphs.md',
     sources: [
       { label: 'Official Problem 6, page 3', url: '/research/prism-india-problem-set.pdf', page: 3 },
-      { label: 'Original TeX: Construction with arbitrarily many simultaneous winners, Steps 1-3', url: '/research/problem-6-original.tex', section: 'Construction with arbitrarily many simultaneous winners; Integer-coordinate version; Steps 1-3; Conclusion' },
-      { label: 'Original rough notebook, page 1 onward (not transcribed)', url: '/research/problem-6-rough.pdf', page: 1 },
-      { label: 'Original rough notebook, page 7: partitioned rectangle and repeated wins', url: '/research/problem-6-rough.pdf', page: 7, claimScan: true },
-      { label: 'Original rough notebook, page 8: unbounded conclusion', url: '/research/problem-6-rough.pdf', page: 8, claimScan: true },
+      { label: 'Problem 6 solution (public TeX edition)', url: '/research/problem-6-original.tex', section: 'Construction with arbitrarily many simultaneous winners; Integer-coordinate version; Steps 1-3; Conclusion' },
+      { label: 'Notebook (public PDF edition), from page 1', url: '/research/problem-6-rough.pdf', page: 1 },
+      { label: 'Notebook page 7: ladder and repeated wins', url: '/research/problem-6-rough.pdf', page: 7, claimScan: true },
+      { label: 'Notebook page 8: unbounded conclusion', url: '/research/problem-6-rough.pdf', page: 8, claimScan: true },
     ],
     sections: [
       { title: '1. The question', paragraphs: ['Each day one player claims a new undirected unit edge. A player wins when their edge endpoints can be joined by a simple path made only of edges claimed on later days. The lattice version requires integer-coordinate endpoints. The important word is first: how many players can become winners on the same day?'] },
@@ -74,7 +74,7 @@ export const DOSSIERS = [
     document: '/research/corrections/number-forge.md',
     sources: [
       { label: 'Official Problem 3, page 2 (context only)', url: '/research/prism-india-problem-set.pdf', page: 2 },
-      { label: 'Original Problem 3 TeX (historical context, not attribution of this bug)', url: '/research/problem-3-original.tex', section: 'Historical Problem 3 source; software generalization is a separate artifact' },
+      { label: 'Problem 3 solution (public TeX edition; earlier named cases)', url: '/research/problem-3-original.tex', section: 'Historical Problem 3 source; software generalization is a separate artifact' },
     ],
     sections: [
       { title: '1. What the app tried to do', paragraphs: ['Number Forge looks for nonnegative combinations of generators. For a family {ma,mb,c}, where c is 1 modulo m, the app tried to use the residue to turn a three-generator question into a smaller two-generator one. That is useful, but a residue alone is not enough to prove a target impossible.'] },

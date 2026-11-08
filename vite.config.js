@@ -43,8 +43,9 @@ export default defineConfig(() => {
       if (enabled) {
         for (const name of fs.readdirSync(path.join(dir,'research/corrections'))) {
           const file=path.join(dir,'research/corrections',name);
-          const text=rewriteResearchLinks(fs.readFileSync(file,'utf8'),href=>availableResearchHref(href,{mode:'public-editions',baseUrl}));
-          fs.writeFileSync(file,'> Source links open edited public editions; original hashes identify private historical sources. Mathematical corrections remain separate.\n\n'+text);
+          const original=fs.readFileSync(file,'utf8');
+          const updated=rewriteResearchLinks(original,href=>availableResearchHref(href,{mode:'public-editions',baseUrl}));
+          if(updated!==original)fs.writeFileSync(file,updated);
         }
       }
     },

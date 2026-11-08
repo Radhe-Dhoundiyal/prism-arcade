@@ -24,8 +24,10 @@ function Dossier({ dossier }) {
     {dossier.portalId === 'temporal-graphs' && <MathEquation id="temporal" />}
     <p>This correction came later. The original notes are left as they were.</p>
     <a href={dossier.document} target="_blank" rel="noreferrer">Read the full notes</a>
-    <details><summary>Original sources</summary><ul>{dossier.sources.map((source) =>
-      <li key={`${source.url}-${source.page ?? 'tex'}`}><ResearchAssetLink href={sourceHref(source)} target="_blank" rel="noreferrer">{source.label}</ResearchAssetLink></li>)}</ul></details>
+    <details><summary>Earlier sources</summary><ul>{dossier.sources.map((source) =>
+      <li key={`${source.url}-${source.page ?? 'tex'}`}>{source.url === '/research/prism-india-problem-set.pdf'
+        ? <>{source.label} (not reproduced here; see <a href="https://www.prism-india.org/" target="_blank" rel="noreferrer">PRISM India</a>)</>
+        : <ResearchAssetLink href={sourceHref(source)} target="_blank" rel="noreferrer">{source.label}</ResearchAssetLink>}</li>)}</ul></details>
     {dossier.sections.map((section) => <section key={section.title}>
       <h4>{section.title}</h4>{section.equation && <MathEquation id={section.equation} />}{section.paragraphs?.map((text) => <p key={text}>{text}</p>)}
       {section.steps && <ol className={section.derivation ? 'derivation-steps' : undefined}>{section.steps.map((step) => <li key={step}>{section.derivation ? <code>{step}</code> : step}</li>)}</ol>}
@@ -126,7 +128,7 @@ export default function ResearchPanel({ portalId }) {
         {view === 'notebook' && <div className="notebook-investigation">
           <Notebook key={`${portalId}-${notebookPage}`} record={record} initialPage={notebookPage} />
           <aside className="source-context"><h3>Original question</h3><p>{narrative.question}</p>
-            {statement && <ResearchAssetLink href={sourceHref({ url: statement.url, page: statement.sourcePage })} target="_blank" rel="noreferrer">Official question / page {statement.sourcePage}</ResearchAssetLink>}
+            {statement && <p className="source-caption">The official question is on page {statement.sourcePage} of the PRISM India problem set, which is not reproduced here.</p>}
             <h3>What to track</h3><p>{narrative.quantities}</p>
             <h3>The idea and its limits</h3><p>{narrative.insight}</p><p>{narrative.correction}</p>
             {dossier?.sources.filter((source) => source.claimScan).map((source) => <p key={source.page}><button className="research-jump" onClick={() => setNotebookPage(source.page)}>Original claim / notebook page {source.page}</button></p>)}
@@ -160,7 +162,9 @@ export default function ResearchPanel({ portalId }) {
         <details><summary>Source Details / hashes and correction history</summary>
           <p>{catalog.researchContext.credit}</p><p>{catalog.researchContext.scope}</p>
           {record.sourceNote && <p>{record.sourceNote}</p>}
-          <ul>{record.assets.map((asset) => <li key={asset.url}><ResearchAssetLink href={asset.url} target="_blank" rel="noreferrer">{asset.originalFile}</ResearchAssetLink>
+          <ul>{record.assets.map((asset) => <li key={asset.url}>{publicEditionAsset(asset.url)
+            ? <ResearchAssetLink href={asset.url} target="_blank" rel="noreferrer">{asset.originalFile} (public edition)</ResearchAssetLink>
+            : <span data-source-original={asset.url}>{asset.originalFile} (not distributed)</span>}
             <p>Private original / source page: {asset.sourcePage ?? 'not applicable'}. Original bytes: {asset.bytes}. {asset.verificationStatus}</p><code>Original SHA-256 {asset.sha256}</code>
             {publicEditionAsset(asset.url) && <p>Public edition SHA-256: <code>{publicEditionAsset(asset.url).sha256}</code></p>}</li>)}</ul>
           {record.correctionHistory.map((entry) => <p key={entry.note}>{entry.date} / {entry.actor}: {entry.note}</p>)}

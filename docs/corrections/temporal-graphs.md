@@ -4,13 +4,16 @@ Problem 6 / Mathematical correction
 
 This note explains a later correction to my original answer. The notebook and TeX still show what I wrote at the time; private originals are not posted here.
 
-## Original sources
+## Earlier sources
 
-- [Official Problem 6, page 3](../../public/research/availability.html?source=%2Fresearch%2Fprism-india-problem-set.pdf%23page%3D3) - Original reference: `/research/prism-india-problem-set.pdf#page=3`.
-- [Original TeX: Construction with arbitrarily many simultaneous winners, Steps 1-3](../../public/research/availability.html?source=%2Fresearch%2Fproblem-6-original.tex) - Original reference: `/research/problem-6-original.tex`. Section: Construction with arbitrarily many simultaneous winners; Integer-coordinate version; Steps 1-3; Conclusion.
-- [Original rough notebook, page 1 onward (not transcribed)](../../public/research/availability.html?source=%2Fresearch%2Fproblem-6-rough.pdf%23page%3D1) - Original reference: `/research/problem-6-rough.pdf#page=1`.
-- [Original rough notebook, page 7: partitioned rectangle and repeated wins](../../public/research/availability.html?source=%2Fresearch%2Fproblem-6-rough.pdf%23page%3D7) - Original reference: `/research/problem-6-rough.pdf#page=7`.
-- [Original rough notebook, page 8: unbounded conclusion](../../public/research/availability.html?source=%2Fresearch%2Fproblem-6-rough.pdf%23page%3D8) - Original reference: `/research/problem-6-rough.pdf#page=8`.
+These are edited public editions; the untouched files remain private.
+
+- [Problem 6 solution (public TeX edition)](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-6-solution.tex) — see the ladder construction in Steps 1–3 and its conclusion.
+- [Full notebook (public PDF edition)](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-6-notebook.pdf)
+- [Notebook page 7: the ladder and repeated wins](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/pages/temporal-graphs-7.webp)
+- [Notebook page 8: my unbounded conclusion](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/pages/temporal-graphs-8.webp)
+
+The official Problem 6 statement is on page 3 of the [PRISM India](https://www.prism-india.org/) problem set, which is not reproduced here.
 
 ## The question
 

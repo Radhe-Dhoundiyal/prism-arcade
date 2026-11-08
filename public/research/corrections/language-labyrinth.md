@@ -4,13 +4,16 @@ Problem 5 / Mathematical correction
 
 This note explains a later correction to my original answer. The notebook and TeX still show what I wrote at the time; private originals are not posted here.
 
-## Original sources
+## Earlier sources
 
-- [Official Problem 5, page 3](../availability.html?source=%2Fresearch%2Fprism-india-problem-set.pdf%23page%3D3) - Original reference: `/research/prism-india-problem-set.pdf#page=3`.
-- [Original TeX: Initial Exploration; Observations 1 and 2; Conclusion](../availability.html?source=%2Fresearch%2Fproblem-5-original.tex) - Original reference: `/research/problem-5-original.tex`. Section: Initial Exploration; Observation 1 (Suffix Invariant); Observation 2 (Palindromes with both letters); Conclusion.
-- [Original rough notebook, page 1 onward (not transcribed)](../availability.html?source=%2Fresearch%2Fproblem-5-rough.pdf%23page%3D1) - Original reference: `/research/problem-5-rough.pdf#page=1`.
-- [Original rough notebook, page 15: zero-answer argument](../availability.html?source=%2Fresearch%2Fproblem-5-rough.pdf%23page%3D15) - Original reference: `/research/problem-5-rough.pdf#page=15`.
-- [Original rough notebook, page 16: observation summary](../availability.html?source=%2Fresearch%2Fproblem-5-rough.pdf%23page%3D16) - Original reference: `/research/problem-5-rough.pdf#page=16`.
+These are edited public editions; the untouched files remain private.
+
+- [Problem 5 solution (public TeX edition)](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-5-solution.tex) — see *Initial Exploration*, Observations 1–2 and the conclusion.
+- [Full notebook (public PDF edition)](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-5-notebook.pdf)
+- [Notebook page 15: my zero-answer argument](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/pages/language-labyrinth-15.webp)
+- [Notebook page 16: observation summary](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/pages/language-labyrinth-16.webp)
+
+The official Problem 5 statement is on page 3 of the [PRISM India](https://www.prism-india.org/) problem set, which is not reproduced here.
 
 ## The question
 

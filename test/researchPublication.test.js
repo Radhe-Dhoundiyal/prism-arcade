@@ -88,6 +88,25 @@ it('downloadable dossier links resolve relative and absolute notices without exp
     assert.equal(rewriteResearchLinks(held,resolve),held);
   }
 });
+it('correction notes link directly to approved public editions',()=>{
+  const base='https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com';
+  const allowed=new Set(PUBLIC_RESEARCH_EDITIONS.files.map(file=>file.url));
+  const expected={
+    'number-forge':['problem-3-solution.tex'],
+    'language-labyrinth':['problem-5-solution.tex','problem-5-notebook.pdf','pages/language-labyrinth-15.webp','pages/language-labyrinth-16.webp'],
+    'temporal-graphs':['problem-6-solution.tex','problem-6-notebook.pdf','pages/temporal-graphs-7.webp','pages/temporal-graphs-8.webp'],
+  };
+  for(const [name,files] of Object.entries(expected)){
+    const notes=fs.readFileSync(`docs/corrections/${name}.md`,'utf8');
+    assert.equal(notes,fs.readFileSync(`public/research/corrections/${name}.md`,'utf8'));
+    assert.doesNotMatch(notes,/availability\.html\?source=/);
+    const links=[...notes.matchAll(/\]\((https:\/\/[^)]+)\)/g)].map(match=>match[1]);
+    for(const link of links)assert.ok([base,'https://www.prism-india.org'].includes(new URL(link).origin),link);
+    const editions=links.filter(url=>new URL(url).origin===base);
+    assert.deepEqual(editions.map(url=>new URL(url).pathname).sort(),files.map(file=>`/research/v1/${file}`).sort());
+    for(const link of editions)assert.ok(allowed.has(new URL(link).pathname),link);
+  }
+});
 it('production preview serves public TeX with an explicit content type',()=>{
   const directory=fs.mkdtempSync(path.join(os.tmpdir(),'prism-preview-'));
   try{

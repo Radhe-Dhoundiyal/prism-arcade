@@ -4,10 +4,11 @@ Number Forge / Software correction
 
 This explains a later software fix, not a mistake in my original Problem 3 notebook. The original source files are preserved privately.
 
-## Original sources
+## Earlier source
 
-- [Official Problem 3, page 2 (context only)](../../public/research/availability.html?source=%2Fresearch%2Fprism-india-problem-set.pdf%23page%3D2) - Original reference: `/research/prism-india-problem-set.pdf#page=2`.
-- [Original Problem 3 TeX (historical context, not attribution of this bug)](../../public/research/availability.html?source=%2Fresearch%2Fproblem-3-original.tex) - Original reference: `/research/problem-3-original.tex`. Section: Historical Problem 3 source; software generalization is a separate artifact.
+My [Problem 3 solution (public TeX edition)](https://lhxs4gvzybfjtuwr.public.blob.vercel-storage.com/research/v1/problem-3-solution.tex) covers the original named cases. The generalized software reduction that failed came later and is not part of that solution.
+
+The official Problem 3 statement is on page 2 of the [PRISM India](https://www.prism-india.org/) problem set, which is not reproduced here.
 
 ## What the app tried to do
 
