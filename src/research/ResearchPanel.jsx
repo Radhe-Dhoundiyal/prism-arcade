@@ -154,12 +154,12 @@ export default function ResearchPanel({ portalId }) {
           </section>{showDossier && dossier && <Dossier dossier={dossier} />}
         </>}
       </div>
-      <footer className="research-provenance"><h3>Provenance</h3><p>Historical investigations and later mathematical corrections are documented separately. Source Details records the original references, public editions and verification history. See <a href="https://github.com/Radhe-Dhoundiyal/prism-arcade/blob/main/docs/provenance.md" target="_blank" rel="noreferrer">provenance and attribution</a>.</p>
-        <p>Research links open labeled public editions where included. Unmodified historical originals and the official problem-set PDF are not distributed. Source Details distinguishes original and derivative hashes.</p>
-        <p><a href="https://www.prism-india.org/" target="_blank" rel="noreferrer">PRISM India official website</a></p>
-        <p>Research editions and media have separate rights. Third-party and held material require separate permission; see the <a href="/research-rights.txt" target="_blank" rel="noreferrer">research-rights notice</a>.</p>
+      <footer className="research-provenance"><h3>Sources and credits</h3>
+        <p>My earlier notes and the later software checks are kept separate. The public research pages are edited copies; <a href="https://github.com/Radhe-Dhoundiyal/prism-arcade/blob/main/docs/provenance.md" target="_blank" rel="noreferrer">source history and AI assistance</a> explains the changes.</p>
+        <p>The problems come from <a href="https://www.prism-india.org/" target="_blank" rel="noreferrer">PRISM India</a>. This is an independent project, and research materials have their own <a href="/research-rights.txt" target="_blank" rel="noreferrer">reuse terms</a>.</p>
         <details><summary>Source Details / hashes and correction history</summary>
-          <p>{record.authorship}</p><p>{record.claimStatus}</p>
+          <p>{catalog.researchContext.credit}</p><p>{catalog.researchContext.scope}</p>
+          {record.sourceNote && <p>{record.sourceNote}</p>}
           <ul>{record.assets.map((asset) => <li key={asset.url}><ResearchAssetLink href={asset.url} target="_blank" rel="noreferrer">{asset.originalFile}</ResearchAssetLink>
             <p>Private original / source page: {asset.sourcePage ?? 'not applicable'}. Original bytes: {asset.bytes}. {asset.verificationStatus}</p><code>Original SHA-256 {asset.sha256}</code>
             {publicEditionAsset(asset.url) && <p>Public edition SHA-256: <code>{publicEditionAsset(asset.url).sha256}</code></p>}</li>)}</ul>

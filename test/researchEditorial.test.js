@@ -8,7 +8,8 @@ const digest=value=>crypto.createHash('sha256').update(JSON.stringify(value)).di
 it('retains the published historical assets, page references and dates',()=>{
   const sources=catalog.records.map(r=>({portalId:r.portalId,problemNumber:r.problemNumber,assets:r.assets,dates:r.correctionHistory.map(h=>h.date)}));
   assert.equal(digest(sources),'e78a350eb36580b078143631e93aa4fc4b2538cc885f6cb22ce4c3a3e9b89ad1');
-  for(const record of catalog.records){
-    assert.match(record.authorship,/Radhe Dhoundiyal/);
-  }
+  assert.match(catalog.researchContext.credit,/Radhe Dhoundiyal/);
+  assert.match(catalog.researchContext.credit,/AI tools/);
+  assert.match(catalog.researchContext.scope,/official problems/);
+  assert.match(catalog.records.find(record=>record.portalId==='blackboard-moves').sourceNote,/no earlier notebook/);
 });
