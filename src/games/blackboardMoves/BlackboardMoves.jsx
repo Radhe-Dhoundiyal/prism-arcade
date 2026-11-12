@@ -231,6 +231,7 @@ export default function BlackboardMoves({ onBack }) {
   const [challengeHintsUsed, setChallengeHintsUsed] = useState(0);
   const [challengeResult, setChallengeResult] = useState(null);
   const [challengeMessage, setChallengeMessage] = useState('');
+  const [showFeaturedBaseline, setShowFeaturedBaseline] = useState(false);
   const [challengeProgress, setChallengeProgress] = useState(() =>
     loadBlackboardChallengeProgress(),
   );
@@ -1019,14 +1020,19 @@ export default function BlackboardMoves({ onBack }) {
           <aside className="score-panel">
             <section>
               <h2>Exact Baseline</h2>
+              {featuredChallenge && !showFeaturedBaseline && !challengeResult && (
+                <button className="ghost-action" type="button" onClick={() => setShowFeaturedBaseline(true)}>
+                  Reveal exact range
+                </button>
+              )}
               <dl className="score-grid">
                 <div>
                   <dt>Optimal min</dt>
-                  <dd>{challengeSummary.minMoves}</dd>
+                  <dd>{featuredChallenge && !showFeaturedBaseline && !challengeResult ? 'Hidden' : challengeSummary.minMoves}</dd>
                 </div>
                 <div>
                   <dt>Optimal max</dt>
-                  <dd>{challengeSummary.maxMoves}</dd>
+                  <dd>{featuredChallenge && !showFeaturedBaseline && !challengeResult ? 'Hidden' : challengeSummary.maxMoves}</dd>
                 </div>
                 <div>
                   <dt>Largest-largest</dt>
