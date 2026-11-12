@@ -37,5 +37,6 @@ export function availableResearchHref(reference, policy = RESEARCH_ASSET_POLICY)
 }
 
 export function researchLinkHref(reference, policy = RESEARCH_ASSET_POLICY) {
-  return availableResearchHref(reference, policy) ?? '/research/availability.html?source=' + encodeURIComponent(reference);
+  const appBase = typeof import.meta.env === 'object' ? import.meta.env.BASE_URL || '/' : '/';
+  return availableResearchHref(reference, policy) ?? `${appBase}research/availability.html?source=${encodeURIComponent(reference)}`;
 }

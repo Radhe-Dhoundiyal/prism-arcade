@@ -126,7 +126,7 @@ export default function Lobby({
       </section>
 
       <p className="lobby-challenge-link">
-        <a href="/challenges/">Try four open mathematical challenges</a>
+        <a href={`${import.meta.env.BASE_URL}challenges/index.html`}>Try four open mathematical challenges</a>
       </p>
 
       <section className="lobby-stats" aria-label="Arcade progress">

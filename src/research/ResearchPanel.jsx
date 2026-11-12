@@ -23,7 +23,7 @@ function Dossier({ dossier }) {
     <p className="research-kicker">{dossier.subtitle}</p><h3>{dossier.title}</h3>
     {dossier.portalId === 'temporal-graphs' && <MathEquation id="temporal" />}
     <p>This correction came later. The original notes are left as they were.</p>
-    <a href={dossier.document} target="_blank" rel="noreferrer">Read the full notes</a>
+    <a href={`${import.meta.env.BASE_URL}${dossier.document.slice(1)}`} target="_blank" rel="noreferrer">Read the full notes</a>
     <details><summary>Earlier sources</summary><ul>{dossier.sources.map((source) =>
       <li key={`${source.url}-${source.page ?? 'tex'}`}>{source.url === '/research/prism-india-problem-set.pdf'
         ? <>{source.label} (not reproduced here; see <a href="https://www.prism-india.org/" target="_blank" rel="noreferrer">PRISM India</a>)</>
@@ -158,7 +158,7 @@ export default function ResearchPanel({ portalId }) {
       </div>
       <footer className="research-provenance"><h3>Sources and credits</h3>
         <p>My earlier notes and the later software checks are kept separate. The public research pages are edited copies; <a href="https://github.com/Radhe-Dhoundiyal/prism-arcade/blob/main/docs/provenance.md" target="_blank" rel="noreferrer">source history and AI assistance</a> explains the changes.</p>
-        <p>The problems come from <a href="https://www.prism-india.org/" target="_blank" rel="noreferrer">PRISM India</a>. This is an independent project, and research materials have their own <a href="/research-rights.txt" target="_blank" rel="noreferrer">reuse terms</a>.</p>
+        <p>The problems come from <a href="https://www.prism-india.org/" target="_blank" rel="noreferrer">PRISM India</a>. This is an independent project, and research materials have their own <a href={`${import.meta.env.BASE_URL}research-rights.txt`} target="_blank" rel="noreferrer">reuse terms</a>.</p>
         <details><summary>Source Details / hashes and correction history</summary>
           <p>{catalog.researchContext.credit}</p><p>{catalog.researchContext.scope}</p>
           {record.sourceNote && <p>{record.sourceNote}</p>}
