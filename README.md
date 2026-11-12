@@ -4,6 +4,8 @@ PRISM Arcade turns eight PRISM India problems into interactive mathematical expe
 
 **Live demo:** [Play all eight PRISM Arcade portals](https://prism-arcade-live.vercel.app/).
 
+**Open challenges:** [Four mathematical questions to try](https://prism-arcade-live.vercel.app/challenges/).
+
 ## From Notebook to Game
 
 I started by working through the PRISM India problems on paper. Some ideas led to proofs; others led to conjectures, mistakes and counterexamples. The games gave me a way to test those ideas more systematically.

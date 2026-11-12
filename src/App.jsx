@@ -16,7 +16,7 @@ const views = {
   'temporal-graphs': lazy(() => import('./games/temporalGraphs/TemporalGraphs.jsx')),
 };
 const readRoute = () => {
-  const requested = window.location.hash.slice(1);
+  const requested = window.location.hash.slice(1).split('/')[0];
   return Object.hasOwn(views, requested) ? requested : 'lobby';
 };
 

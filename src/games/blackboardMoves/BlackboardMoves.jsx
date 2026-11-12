@@ -186,6 +186,9 @@ function saveConjectures(conjectures) {
 }
 
 export default function BlackboardMoves({ onBack }) {
+  const featuredChallenge = window.location.hash === '#blackboard-moves/beat-greedy-455'
+    ? BLACKBOARD_CHALLENGES.find((challenge) => challenge.id === 'beat-greedy-455')
+    : null;
   const [initialBoard, setInitialBoard] = useState(PRESETS[0].board);
   const [board, setBoard] = useState(PRESETS[0].board);
   const [selectedIndices, setSelectedIndices] = useState([]);
@@ -219,9 +222,9 @@ export default function BlackboardMoves({ onBack }) {
   const [exportText, setExportText] = useState('');
   const [message, setMessage] = useState('');
   const job = useMathJob();
-  const [mode, setMode] = useState(BLACKBOARD_MODES.lab);
-  const [activeChallengeId, setActiveChallengeId] = useState(BLACKBOARD_CHALLENGES[0].id);
-  const [challengeBoard, setChallengeBoard] = useState(BLACKBOARD_CHALLENGES[0].startState);
+  const [mode, setMode] = useState(featuredChallenge ? BLACKBOARD_MODES.challenge : BLACKBOARD_MODES.lab);
+  const [activeChallengeId, setActiveChallengeId] = useState(featuredChallenge?.id || BLACKBOARD_CHALLENGES[0].id);
+  const [challengeBoard, setChallengeBoard] = useState(featuredChallenge?.startState || BLACKBOARD_CHALLENGES[0].startState);
   const [challengeHistory, setChallengeHistory] = useState([]);
   const [challengeSelectedIndices, setChallengeSelectedIndices] = useState([]);
   const [challengeHintsVisible, setChallengeHintsVisible] = useState(false);
@@ -811,7 +814,8 @@ export default function BlackboardMoves({ onBack }) {
               <h2>Challenge Map</h2>
               <div className="blackboard-challenge-list">
                 {BLACKBOARD_CHALLENGES.map((challenge, index) => {
-                  const unlocked = isBlackboardChallengeUnlocked(challenge.id, challengeProgress);
+                  const unlocked = challenge.id === featuredChallenge?.id ||
+                    isBlackboardChallengeUnlocked(challenge.id, challengeProgress);
                   const completed = Boolean(challengeProgress.completed[challenge.id]);
                   const status = completed ? 'Completed' : unlocked ? 'Unlocked' : 'Locked';
                   const stars = challengeProgress.highestStars[challenge.id] || 0;

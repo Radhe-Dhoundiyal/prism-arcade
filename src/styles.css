@@ -103,6 +103,26 @@ p {
   font-size: 1.08rem;
 }
 
+.lobby-challenge-link {
+  margin: -4px 0 24px;
+}
+
+.lobby-challenge-link a {
+  display: inline-block;
+  border: 1px solid rgba(69, 240, 255, 0.52);
+  border-radius: 8px;
+  padding: 11px 16px;
+  color: var(--cyan);
+  text-decoration: none;
+  background: rgba(69, 240, 255, 0.08);
+  font-weight: 700;
+}
+
+.lobby-challenge-link a:hover,
+.lobby-challenge-link a:focus-visible {
+  background: rgba(69, 240, 255, 0.16);
+}
+
 .lobby-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

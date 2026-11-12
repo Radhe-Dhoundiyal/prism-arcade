@@ -125,6 +125,10 @@ export default function Lobby({
         </div>
       </section>
 
+      <p className="lobby-challenge-link">
+        <a href="/challenges/">Try four open mathematical challenges</a>
+      </p>
+
       <section className="lobby-stats" aria-label="Arcade progress">
         <div>
           <span>Started portals</span>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Four mathematical challenges from PRISM Arcade: strategy, graphs, number theory and exact search.">
+  <title>Open Challenges · PRISM Arcade</title>
+  <style>
+    :root { color-scheme: light; font: 17px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #202c3c; background: #f7f8fa; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    .wrap { max-width: 1060px; margin: auto; padding: 40px 20px 64px; }
+    a { color: #135d83; text-underline-offset: 3px; }
+    a:focus-visible { outline: 3px solid #efa53b; outline-offset: 4px; }
+    .back { font-size: .92rem; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.12; letter-spacing: -.035em; margin: 24px 0 12px; }
+    .intro { max-width: 750px; color: #46556a; margin: 0 0 28px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card { background: white; border: 1px solid #dce2ea; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; align-items: flex-start; }
+    .topic { font-size: .82rem; font-weight: 700; letter-spacing: .055em; text-transform: uppercase; color: #3f6478; }
+    h2 { font-size: 1.36rem; line-height: 1.3; letter-spacing: -.015em; margin: 12px 0 8px; }
+    .card p { margin: 0 0 12px; }
+    .card a { margin-top: auto; font-weight: 650; padding-top: 10px; }
+    .note { background: #eaf1f5; border-radius: 12px; padding: 20px 24px; margin-top: 26px; }
+    .note h2 { margin-top: 0; }
+    footer { color: #536174; font-size: .86rem; margin-top: 30px; max-width: 850px; }
+    @media (max-width: 690px) { .wrap { padding-top: 24px; } .grid { grid-template-columns: 1fr; } .card { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="back" href="/">← Back to PRISM Arcade</a>
+    <h1>Four open math challenges</h1>
+    <p class="intro">Pick one, try it in the browser, and see whether you can find a strategy, a proof or a counterexample. Some answers are already known; the point is to test the reasoning. You don't need an account, and there's no leaderboard.</p>
+
+    <div class="grid">
+      <article class="card" id="grid-dominion">
+        <span class="topic">1 · Grid Dominion · Strategy</span>
+        <h2>Can the second player force a tie?</h2>
+        <p>Two players fill a 2×3 grid, one square per turn. Either player may choose red or blue. At the end, count horizontally and vertically adjacent pairs of each color. Player 2 wins if the two counts are equal.</p>
+        <p>Can Player 2 guarantee that result, whatever Player 1 does? Try a 3×3 board too. What changes?</p>
+        <a href="/#grid-dominion">Open the game (choose 2×3) →</a>
+      </article>
+
+      <article class="card" id="blackboard-moves">
+        <span class="topic">2 · Blackboard Moves · Exact search</span>
+        <h2>Can you beat nine moves?</h2>
+        <p>Start with [4, 5, 5]. Each move chooses positive entries a ≥ b and replaces them with a+b and b−1. Stop when fewer than two positive entries remain.</p>
+        <p>Always choosing the two largest takes nine moves. Can you do better? What is the largest possible number of moves?</p>
+        <a href="/#blackboard-moves/beat-greedy-455">Try Beat Greedy directly →</a>
+      </article>
+
+      <article class="card" id="temporal-graphs">
+        <span class="topic">3 · Temporal Graphs · Proof</span>
+        <h2>How many first-time winners?</h2>
+        <p>Add one new undirected edge each day. An earlier edge's owner wins once its endpoints are connected by a path using only edges from later days.</p>
+        <p>When today's edge appears, could two owners become winners for the first time? The ladder preset is a good place to investigate.</p>
+        <a href="/#temporal-graphs">Explore later-edge paths →</a>
+      </article>
+
+      <article class="card" id="number-forge">
+        <span class="topic">4 · Number Forge · Number theory</span>
+        <h2>Where does a residue shortcut break?</h2>
+        <p>Build nonnegative integer combinations of 6, 7 and 10. Find the largest positive integer that cannot be built.</p>
+        <p>Then investigate a shortcut that uses only the smallest number of 7s matching the target's residue mod 2. It misses 14 and 21. Why?</p>
+        <a href="/#number-forge">Open Number Forge (enter 6, 7, 10) →</a>
+      </article>
+    </div>
+
+    <section class="note" aria-labelledby="feedback-title">
+      <h2 id="feedback-title">Have a different answer?</h2>
+      <p>I'd love to see an explicit move sequence, a shorter proof, or a reproducible case where the software disagrees with the mathematics. You can reply to the discussion where you found this challenge. For bugs, <a href="https://github.com/Radhe-Dhoundiyal/prism-arcade/issues/new">open a GitHub issue</a> with the game, input and expected result.</p>
+      <p>The <a href="https://github.com/Radhe-Dhoundiyal/prism-arcade">repository</a> contains the implementations, checks and correction notes.</p>
+    </section>
+
+    <footer>PRISM Arcade is an independent project inspired by problems from <a href="https://www.prism-india.org/">PRISM India</a>, without organizer endorsement. AI tools helped with software implementation and verification; the repository explains the research history and corrections.</footer>
+  </main>
+</body>
+</html>
