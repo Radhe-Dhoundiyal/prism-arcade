@@ -2,6 +2,7 @@ import { getBrowserStorage, guardStorage } from '../../core/storage.js';
 import { filterKnownProgress } from '../../core/progress.js';
 import {
   applyMove,
+  canResearchExactState,
   canonicalBoardKey,
   generateLegalMoves,
   GREEDY_STRATEGIES,
@@ -293,6 +294,22 @@ export function analyzeExactChallengeBranches(board) {
         canonicalBoardKey(left.resultingState).localeCompare(canonicalBoardKey(right.resultingState)),
     ),
   };
+}
+
+// A search limit should never stop the puzzle itself from being played.
+export function getSafeChallengeHintBranches(board) {
+  const unavailable = (reason) => ({ available: false, branches: [], reason });
+
+  if (!canResearchExactState(board)) {
+    return unavailable('Exact branch hints are limited to small boards. You can still play, undo, and finish the challenge.');
+  }
+
+  try {
+    return { ...analyzeExactChallengeBranches(board), available: true };
+  } catch (error) {
+    if (!(error instanceof RangeError)) throw error;
+    return unavailable('Exact search reached its limit here. The moves themselves are still legal.');
+  }
 }
 
 export function isForecastMaxOptimalMove(board, move) {

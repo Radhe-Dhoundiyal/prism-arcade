@@ -10,8 +10,8 @@ import {
   calculateBlackboardChallengeStars,
   getChallengeExplanationCards,
   getBlackboardChallengeSummary,
+  getSafeChallengeHintBranches,
   isBlackboardChallengeUnlocked,
-  isForecastMaxOptimalMove,
   loadBlackboardChallengeProgress,
   recordBlackboardChallengeAttempt as recordBlackboardChallengeProgressAttempt,
   saveBlackboardChallengeProgress,
@@ -228,6 +228,7 @@ export default function BlackboardMoves({ onBack }) {
   const [challengeHistory, setChallengeHistory] = useState([]);
   const [challengeSelectedIndices, setChallengeSelectedIndices] = useState([]);
   const [challengeHintsVisible, setChallengeHintsVisible] = useState(false);
+  const [challengeHintBranches, setChallengeHintBranches] = useState(null);
   const [challengeHintsUsed, setChallengeHintsUsed] = useState(0);
   const [challengeResult, setChallengeResult] = useState(null);
   const [challengeMessage, setChallengeMessage] = useState('');
@@ -363,10 +364,6 @@ export default function BlackboardMoves({ onBack }) {
   const challengeSummary = useMemo(
     () => getBlackboardChallengeSummary(activeChallenge),
     [activeChallenge],
-  );
-  const challengeHintBranches = useMemo(
-    () => analyzeExactChallengeBranches(challengeBoard),
-    [challengeBoard],
   );
   const challengeLargestLargestMove = useMemo(
     () => chooseGreedyMove(challengeBoard, GREEDY_STRATEGIES.largestLargest),
@@ -608,6 +605,7 @@ export default function BlackboardMoves({ onBack }) {
     setChallengeHistory([]);
     setChallengeSelectedIndices([]);
     setChallengeHintsVisible(false);
+    setChallengeHintBranches(null);
     setChallengeHintsUsed(0);
     setChallengeResult(null);
     setChallengeMessage('');
@@ -639,6 +637,8 @@ export default function BlackboardMoves({ onBack }) {
     setChallengeHistory((current) => [...current, record]);
     setChallengeBoard(record.resultingBoard);
     setChallengeSelectedIndices([]);
+    setChallengeHintsVisible(false);
+    setChallengeHintBranches(null);
     setChallengeResult(null);
     setChallengeMessage(
       `Move ${record.moveNumber}: ${move.a}, ${move.b} -> ${move.a + move.b}, ${move.b - 1}`,
@@ -660,11 +660,20 @@ export default function BlackboardMoves({ onBack }) {
         : activeChallenge.startState,
     );
     setChallengeSelectedIndices([]);
+    setChallengeHintsVisible(false);
+    setChallengeHintBranches(null);
     setChallengeMessage('Last challenge move undone.');
   };
 
   const revealChallengeHint = () => {
+    if (challengeHintsVisible) return;
+    const hints = getSafeChallengeHintBranches(challengeBoard);
+    setChallengeHintBranches(hints);
     setChallengeHintsVisible(true);
+    if (!hints.available) {
+      setChallengeMessage(hints.reason);
+      return;
+    }
     setChallengeHintsUsed((current) => current + 1);
     saveStats(recordBlackboardHintUsed(blackboardStats));
   };
@@ -707,7 +716,14 @@ export default function BlackboardMoves({ onBack }) {
         return;
       }
 
-      const branches = analyzeExactChallengeBranches(challengeBoard);
+      let branches;
+      try {
+        branches = analyzeExactChallengeBranches(challengeBoard);
+      } catch (error) {
+        if (!(error instanceof RangeError)) throw error;
+        setChallengeMessage('Exact forecast search reached its limit. Your current moves are still valid.');
+        return;
+      }
       const selectedResult = applyMove(challengeBoard, challengeSelectedMove);
       const selectedBranch = branches.branches.find(
         (branch) =>
@@ -715,7 +731,7 @@ export default function BlackboardMoves({ onBack }) {
           branch.chosenPair[1] === challengeSelectedMove.b &&
           formatBoard(branch.resultingState) === formatBoard(selectedResult),
       );
-      const success = isForecastMaxOptimalMove(challengeBoard, challengeSelectedMove);
+      const success = Boolean(selectedBranch?.optimalForMax);
 
       completeChallengeAttempt({
         success,
@@ -894,24 +910,33 @@ export default function BlackboardMoves({ onBack }) {
             {challengeHintsVisible && (
               <section className="strategy-panel" data-testid="blackboard-challenge-hints">
                 <h2>Branch Hint</h2>
-                <div className="comparison-list">
-                  {challengeHintBranches.branches.slice(0, 3).map((branch) => (
-                    <p key={`${branch.chosenPair.join('-')}-${formatBoard(branch.resultingState)}`}>
-                      ({branch.chosenPair.join(', ')}) leaves future max {branch.maxMoves}
-                      {branch.optimalForMax ? ' - max-optimal' : ''}
+                {challengeHintBranches?.available ? (
+                  <>
+                    <div className="comparison-list">
+                      {challengeHintBranches.branches.slice(0, 3).map((branch) => (
+                        <p key={`${branch.chosenPair.join('-')}-${formatBoard(branch.resultingState)}`}>
+                          ({branch.chosenPair.join(', ')}) leaves future max {branch.maxMoves}
+                          {branch.optimalForMax ? ' - max-optimal' : ''}
+                        </p>
+                      ))}
+                    </div>
+                    <p className="panel-note">
+                      Largest-largest chooses{' '}
+                      {challengeLargestLargestMove
+                        ? `(${challengeLargestLargestMove.a}, ${challengeLargestLargestMove.b})`
+                        : 'nothing'}
+                      {challengeLargestLargestMove &&
+                      challengeHintBranches.branches.some((branch) =>
+                        branch.optimalForMax &&
+                        branch.chosenPair[0] === challengeLargestLargestMove.a &&
+                        branch.chosenPair[1] === challengeLargestLargestMove.b)
+                        ? ', which keeps a maximum-length path available here.'
+                        : ', which does not keep a maximum-length path available here.'}
                     </p>
-                  ))}
-                </div>
-                <p className="panel-note">
-                  Largest-largest chooses{' '}
-                  {challengeLargestLargestMove
-                    ? `(${challengeLargestLargestMove.a}, ${challengeLargestLargestMove.b})`
-                    : 'nothing'}
-                  {challengeLargestLargestMove &&
-                  isForecastMaxOptimalMove(challengeBoard, challengeLargestLargestMove)
-                    ? ', which is safe for max play here.'
-                    : ', which is dangerous for max play here.'}
-                </p>
+                  </>
+                ) : (
+                  <p className="panel-note" role="status">{challengeHintBranches?.reason}</p>
+                )}
               </section>
             )}
           </aside>
@@ -1418,7 +1443,7 @@ export default function BlackboardMoves({ onBack }) {
 
           <section className="number-line-panel">
             <div className="number-line-heading">
-              <span>Move 0</span>
+              <span>Move {history.length}</span>
               <strong>History</strong>
               <span>{history.length}</span>
             </div>
@@ -1475,7 +1500,7 @@ export default function BlackboardMoves({ onBack }) {
                   <strong>{candidate.label}</strong>
                   <span>
                     {candidate.preserved
-                      ? `Preserved - value ${candidate.currentValue}`
+                      ? `Unchanged so far - value ${candidate.currentValue}`
                       : `Broken at move ${candidate.brokenAtMove} - now ${candidate.currentValue}`}
                   </span>
                 </article>
@@ -1526,6 +1551,8 @@ export default function BlackboardMoves({ onBack }) {
           <section className="strategy-panel experiment-panel" data-testid="blackboard-optimal-explainer">
             <h2>Optimal Path Explainer</h2>
             <ResearchLink portalId="blackboard-moves" view="proof">Connect the witness to verification</ResearchLink>
+            <details>
+              <summary>Show advanced paths and strategy comparisons</summary>
             {optimalExplanation.available ? (
               <>
                 <PathReplay key={board.join(',')} path={optimalExplanation.maxPath} />
@@ -1653,6 +1680,7 @@ export default function BlackboardMoves({ onBack }) {
             ) : (
               <p className="panel-note">{optimalExplanation.reason}</p>
             )}
+            </details>
           </section>
 
           <section className="strategy-panel">

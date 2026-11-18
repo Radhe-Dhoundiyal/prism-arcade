@@ -7,6 +7,7 @@ import {
   BLACKBOARD_OBJECTIVES,
   calculateBlackboardChallengeStars,
   getDefaultBlackboardChallengeProgress,
+  getSafeChallengeHintBranches,
   isBlackboardChallengeUnlocked,
   isForecastMaxOptimalMove,
   recordBlackboardChallengeAttempt,
@@ -64,6 +65,26 @@ import {
 } from '../src/games/blackboardMoves/logic.js';
 
 describe('Blackboard Moves logic', () => {
+  it('keeps the reported [4,5,5] path legal without searching oversized hint states', () => {
+    let board = [4, 5, 5];
+    for (const pair of [[5, 4], [5, 3], [8, 2], [9, 1], [10, 10]]) {
+      const move = generateLegalMoves(board).find((entry) =>
+        entry.a === pair[0] && entry.b === pair[1]);
+      assert.ok(move, `Expected a legal pair (${pair.join(', ')})`);
+      board = applyMove(board, move);
+    }
+    assert.deepEqual([...board].sort((a, b) => a - b), [0, 9, 20]);
+    const largeHints = getSafeChallengeHintBranches([0, 10, 10]);
+    assert.equal(largeHints.available, false);
+    assert.deepEqual(largeHints.branches, []);
+    assert.match(largeHints.reason, /still play/i);
+    const afterMove = getSafeChallengeHintBranches(board);
+    assert.equal(afterMove.available, false);
+    const smallHints = getSafeChallengeHintBranches([1, 1, 1]);
+    assert.equal(smallHints.available, true);
+    assert.equal(smallHints.branches.length, 3);
+  });
+
   it('generates legal unordered moves from positive entries only', () => {
     const moves = generateLegalMoves([4, 5, 0, 6]);
 
